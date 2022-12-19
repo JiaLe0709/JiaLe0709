@@ -1,4 +1,3 @@
-<h1 align="center">Hi 👋, I'm Jia Le</h1>
 
 <h3 align="left">Languages and Tools I Use:</h3>
 <p align="left"> <a href="https://www.w3schools.com/cs/" target="_blank" rel="noreferrer"> 
