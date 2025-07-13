@@ -15,7 +15,7 @@ export default function Layout({children, title}) {
                 <main className={'flex-grow'}>
                     {children}
                 </main>
-                <footer className="sticky bottom-6">
+                <footer>
                     <Docks/>
                 </footer>
             </div>

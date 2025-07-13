@@ -44,7 +44,7 @@ const Message = () => {
     return (
         <>
             <Layout>
-                <Toaster richColors={true} position={'top-center'} />
+                <Toaster richColors={true} position={'top-center'}/>
                 <div
                     className={`max-w-screen-md flex flex-col mx-auto p-4 pt-8`}
                 >
@@ -52,33 +52,38 @@ const Message = () => {
                         <Image src={'/letters.png'} alt={'Jia Le @ Letters Cat'} width={170} height={150}/>
                         <h3 className={'text-xl text-center font-extrabold'}>
                             {"Share your "}
-                            <code className="bg-[#A6C145] relative rounded px-[0.3rem] py-[0.2rem] font-semibold"><span className={' text-[#3F1800]'}>suggestions</span></code>
+                            <code className="bg-[#A6C145] relative rounded px-[0.3rem] py-[0.2rem] font-semibold"><span
+                                className={' text-[#3F1800]'}>suggestions</span></code>
                             {" through this page 🐱"}
                         </h3>
                     </div>
                 </div>
                 <form
+                    className='max-w-screen-md mx-auto  space-y-2'
                     autoComplete="off"
-                    className='max-w-screen-md grid sm:grid-cols-2 gap-4 mx-auto p-4 space-y-2'
                     onSubmit={sentMessage}
                 >
-                    <div className={'space-y-2 '}>
-                        <Label htmlFor='name' className={'text-[17px] '}>Name</Label>
-                        <Input required id='name' name='name' type="text" placeholder="Name"/>
+                    <div className='max-w-screen-md grid sm:grid-cols-2 gap-4 mx-auto p-4 space-y-2'>
+                        <div className={'space-y-2 '}>
+                            <Label htmlFor='name' className={'text-[17px] '}>Name</Label>
+                            <Input required id='name' name='name' type="text" placeholder="Name"/>
+                        </div>
+                        <div className={'space-y-2'}>
+                            <Label htmlFor='mail' className={'text-[17px] '}>Email</Label>
+                            <Input id='mail' required name='email' type="email" placeholder="Email"/>
+                        </div>
+                        <div className='sm:col-span-2 space-y-2'>
+                            <Label htmlFor='message' className={'text-[17px] '}>Message</Label>
+                            <Textarea required className='h-40' id='message' name='message'
+                                      placeholder="Type your message here."/>
+                        </div>
                     </div>
-                    <div className={'space-y-2'}>
-                        <Label htmlFor='mail' className={'text-[17px] '}>Email</Label>
-                        <Input id='mail' required name='email' type="email" placeholder="Email"/>
-                    </div>
-                    <div className='sm:col-span-2 space-y-2'>
-                        <Label htmlFor='message' className={'text-[17px] '}>Message</Label>
-                        <Textarea required className='h-50' id='message' name='message'
-                                  placeholder="Type your message here."/>
-                    </div>
-                    <ShimmerButton type="submit" className={'h-10'} disabled={loading}>
+
+                    <ShimmerButton type="submit" className={'h-10 ml-4'} disabled={loading}>
                         <span
-                            className="flex whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
-                            {loading ? <Loader2Icon className={'w-4 h-4 mr-2 animate-spin'} /> : <Send className={'w-4 h-4 mr-2'} />}
+                            className="flex items-center justify-center space-x-2 text-white transition-all duration-300 ease-in-out hover:text-neutral-600 dark:text-neutral-400">
+                            {loading ? <Loader2Icon className={'w-4 h-4 mr-2 animate-spin'}/> :
+                                <Send className={'w-4 h-4 mr-2'}/>}
                             Send
                         </span>
                     </ShimmerButton>
