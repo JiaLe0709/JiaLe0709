@@ -1,4 +1,4 @@
-import { Image, HomeIcon, PencilIcon, Mail, Send } from "lucide-react"
+import { Image, HomeIcon, PencilIcon, Mail, Send, Share } from "lucide-react"
 import Link from "next/link"
 import { buttonVariants } from "@/components/ui/button"
 import {
@@ -25,12 +25,12 @@ const DATA = {
             Message: {
                 name: "Message",
                 url: "/msg",
-                icon: Mail
+                icon: Send
             },
             Email: {
                 name: "Send Email",
                 url: "mailto:jle26531@gmail.com",
-                icon: Send
+                icon: Mail
             },
         }
     }
@@ -84,6 +84,31 @@ export default function Docks() {
                             </Tooltip>
                         </DockIcon>
                     ))}
+                    <DockIcon>
+                        <Tooltip>
+                            <TooltipTrigger asChild>
+                                <span
+                                    onClick={() => {
+                                        const shareData = {
+                                            title: "Jia Le's Wonderland 🍵",
+                                            text: `This is the start of something good... and it will get better.\n`,
+                                            url: window.location.href,
+                                        };
+                                        navigator.share(shareData);
+                                    }}
+                                    className={cn(
+                                        buttonVariants({ variant: "ghost", size: "icon" }),
+                                        "size-12 rounded-full"
+                                    )}
+                                >
+                                    <Share className="size-4" />
+                                </span>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                                <p>Share</p>
+                            </TooltipContent>
+                        </Tooltip>
+                    </DockIcon>
                 </Dock>
             </TooltipProvider>
         </div>

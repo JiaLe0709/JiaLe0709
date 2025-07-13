@@ -18,8 +18,8 @@ export default async function sendtotg(req, res) {
     }
     const response = await fetch(tgUrl, init)
     if (response.status === 200) {
-        res.send({ status: 'Message sent successfully !' })
+        res.send({ status: 'Message sent successfully !', error: false })
     } else {
-        res.send({ status: 'Failed to send message !' })
+        res.send({ status: 'Failed to send message !', error: true })
     }
 }
