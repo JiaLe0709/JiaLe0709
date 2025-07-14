@@ -15,10 +15,11 @@ export default function Layout({children, title}) {
                 <main className={'flex-grow'}>
                     {children}
                 </main>
-                <footer>
-                    <Docks/>
-                </footer>
             </div>
+
+            <footer className={'sticky bottom-6'}>
+                <Docks/>
+            </footer>
             <FloatButton.BackTop/>
         </>
     );

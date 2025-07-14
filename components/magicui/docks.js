@@ -38,7 +38,7 @@ const DATA = {
 
 export default function Docks() {
     return (
-        <div className="sticky bottom-6 items-center justify-center">
+        <div className=" items-center justify-center">
             <TooltipProvider>
                 <Dock direction="middle">
                     {DATA.navbar.map(item => (
