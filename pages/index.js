@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Layout from "@/layouts/globals";
-//import AnimatedGradientBtn from "@/components/magicui/animated-gradient-btn";
 
 export default function Home() {
     return (

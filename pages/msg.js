@@ -43,7 +43,7 @@ const Message = () => {
 
     return (
         <>
-            <Layout>
+            <Layout title={'Message'}>
                 <Toaster richColors={true} position={'top-center'}/>
                 <div
                     className={`max-w-screen-md flex flex-col mx-auto p-4 pt-8`}
@@ -63,7 +63,7 @@ const Message = () => {
                     autoComplete="off"
                     onSubmit={sentMessage}
                 >
-                    <div className='max-w-screen-md grid sm:grid-cols-2 gap-4 mx-auto p-4 space-y-2'>
+                    <div className='max-w-screen-md grid sm:grid-cols-2 gap-3 mx-auto p-4 space-y-1'>
                         <div className={'space-y-2 '}>
                             <Label htmlFor='name' className={'text-[17px] '}>Name</Label>
                             <Input required id='name' name='name' type="text" placeholder="Name"/>

@@ -16,7 +16,6 @@ export default function Layout({children, title}) {
                     {children}
                 </main>
             </div>
-
             <footer className={'sticky bottom-6'}>
                 <Docks/>
             </footer>
