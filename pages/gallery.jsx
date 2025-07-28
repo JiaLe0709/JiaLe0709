@@ -40,7 +40,7 @@ const Gallery = ({posts}) => {
                                     <Carousel className="w-full">
                                         <CarouselContent>
                                             <PhotoProvider>
-                                                {i.image.map((img, id) => (
+                                                {Array.isArray(i.image) && i.image.map((img, id) => (
                                                     <CarouselItem key={id}>
                                                         <PhotoView
                                                             src={`${process.env.NEXT_PUBLIC_SOURCES_URL}/o/${img.sources}/${img.item}`}
