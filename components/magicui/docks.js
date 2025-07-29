@@ -1,4 +1,4 @@
-import { Image, HomeIcon, PencilIcon, Mail, Send, Share } from "lucide-react"
+import { Image, HomeIcon, PencilIcon, Send, Share, Sun, Moon } from "lucide-react"
 import Link from "next/link"
 import { buttonVariants } from "@/components/ui/button"
 import {
@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/tooltip"
 import { cn } from "@/lib/utils"
 import { Dock, DockIcon } from "@/components/magicui/dock"
+import { useTheme } from "next-themes"
 
 const DATA = {
     navbar: [
@@ -27,16 +28,14 @@ const DATA = {
                 url: "/msg",
                 icon: Send
             },
-            Email: {
-                name: "Send Email",
-                url: "mailto:jle26531@gmail.com",
-                icon: Mail
-            },
         }
     }
 }
 
 export default function Docks() {
+
+    const { theme, setTheme } = useTheme()
+
     return (
         <div className=" items-center justify-center">
             <TooltipProvider>
@@ -106,6 +105,23 @@ export default function Docks() {
                             </TooltipTrigger>
                             <TooltipContent>
                                 <p>Share</p>
+                            </TooltipContent>
+                        </Tooltip>
+                    </DockIcon>
+                    <DockIcon>
+                        <Tooltip>
+                            <TooltipTrigger asChild>
+                                <span
+                                    onClick={() => {
+                                        setTheme(theme === "dark" ? "light" : "dark")
+                                    }}
+                                >
+                                    <Sun className="size-4 dark:hidden" />
+                                    <Moon className="size-4 hidden dark:block" />
+                                </span>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                                <p>{'Theme:'}{theme?.charAt(0).toUpperCase() + theme?.slice(1)}</p>
                             </TooltipContent>
                         </Tooltip>
                     </DockIcon>

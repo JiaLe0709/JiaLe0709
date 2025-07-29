@@ -34,7 +34,7 @@ const Gallery = ({posts}) => {
                                 gradientFrom={"#96BC3C"}
                                 gradientTo={'#CDDE6E'}
                                 gradientColor={"#D9D9D955"}
-                                className="p-0"
+                                className="p-0 cursor-pointer"
                             >
                                 <CardContent>
                                     <Carousel className="w-full">

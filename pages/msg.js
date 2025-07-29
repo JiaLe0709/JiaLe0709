@@ -49,12 +49,12 @@ const Message = () => {
                     className={`max-w-screen-md flex flex-col mx-auto p-4 pt-8`}
                 >
                     <div className={'flex flex-col items-center justify-center space-y-4'}>
-                        <Image src={'/letters.png'} alt={'Jia Le @ Letters Cat'} width={170} height={150}/>
+                        <Image src={'/letters.avif'} alt={'Jia Le @ Letters Cat'} width={170} height={150} unoptimized={true}/>
                         <h3 className={'text-xl text-center font-extrabold'}>
                             {"Share your "}
                             <code className="bg-[#A6C145] relative rounded px-[0.3rem] py-[0.2rem] font-semibold"><span
                                 className={' text-[#3F1800]'}>suggestions</span></code>
-                            {" through this page 🐱"}
+                            {" through this page !"}
                         </h3>
                     </div>
                 </div>
