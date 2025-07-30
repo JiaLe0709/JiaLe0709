@@ -1,5 +1,5 @@
 import Layout from "@/layouts/globals";
-import {Card, CardContent, CardFooter, CardTitle, CardHeader, CardDescription} from "@/components/ui/card";
+import {Card, CardContent, CardTitle, CardHeader, CardDescription} from "@/components/ui/card";
 import Image from "next/image";
 import {PhotoProvider, PhotoView} from "react-photo-view";
 import {Carousel, CarouselContent, CarouselItem} from "@/components/ui/carousel";
@@ -65,7 +65,7 @@ const Gallery = ({posts}) => {
                                 </CardContent>
                                 <CardHeader className={'pl-5 pr-5 pt-2 pb-3'}>
                                     <CardTitle className={'flex gap-2 items-center'}>
-                                        <p className={'text-xl'}>{`${new Date(i.date).getFullYear()}-${new Date(i.date).getMonth()}-${new Date(i.date).getDate()}`}</p>
+                                        <p className={'text-xl'}>{`${new Date(i.date).getFullYear()}-${String(new Date(i.date).getMonth() + 1).padStart(2, '0')}-${String(new Date(i.date).getDate()).padStart(2, '0')}`}</p>
                                         <div>
                                             <Badge
                                                 className={`mr-2 bg-lime-200 text-black h-5 font-bold text-[12.5px] inline-flex items-center gap-1`}>
