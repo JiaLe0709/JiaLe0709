@@ -7,9 +7,11 @@ import {Label} from "@/components/ui/label";
 import Image from "next/image";
 import {Send, Loader2Icon} from "lucide-react";
 import {toast, Toaster} from "sonner";
+import {Turnstile} from '@marsidev/react-turnstile'
 
 const Message = () => {
 
+    const [passedVerify, setPassedVerify] = useState(false)
     const [loading, setLoading] = useState(false)
 
     async function sentMessage(e) {
@@ -20,7 +22,7 @@ const Message = () => {
         const res = await fetch(tgUrl, {
             body: JSON.stringify({
                 name: e.target.name.value,
-                mail: e.target.mail.value,
+                mail: e.target.email.value,
                 message: e.target.message.value
             }),
             headers: {
@@ -46,10 +48,10 @@ const Message = () => {
             <Layout title={'Message'}>
                 <Toaster richColors={true} position={'top-center'}/>
                 <div
-                    className={`max-w-screen-md flex flex-col mx-auto p-4 pt-8`}
+                    className={`max-w-screen-md flex flex-col mx-auto p-3`}
                 >
                     <div className={'flex flex-col items-center justify-center space-y-4'}>
-                        <Image src={'/letters.avif'} alt={'Jia Le @ Letters Cat'} width={170} height={150} />
+                        <Image src={'/letters.avif'} alt={'Jia Le @ Letters Cat'} width={150} height={120}/>
                         <h3 className={'text-xl text-center font-extrabold'}>
                             {"Share your "}
                             <code className="bg-[#A6C145] relative rounded px-[0.3rem] py-[0.2rem] font-semibold"><span
@@ -78,8 +80,14 @@ const Message = () => {
                                       placeholder="Type your message here."/>
                         </div>
                     </div>
-
-                    <ShimmerButton type="submit" className={'h-10 ml-4'} disabled={loading}>
+                    <Turnstile
+                        siteKey={process.env.NEXT_PUBLIC_CF_SITE_KEY}
+                        className={'ml-4 rounded-2xl'}
+                        onSuccess={() => setPassedVerify(true)}
+                        onError={() => setPassedVerify(false)}
+                        onExpire={() => setPassedVerify(false)}
+                    />
+                    <ShimmerButton type="submit" className={'h-10 ml-4'} disabled={loading || !passedVerify}>
                         <span
                             className="flex items-center justify-center space-x-2 text-white transition-all duration-300 ease-in-out hover:text-neutral-600 dark:text-neutral-400">
                             {loading ? <Loader2Icon className={'w-4 h-4 mr-2 animate-spin'}/> :
@@ -89,6 +97,7 @@ const Message = () => {
                     </ShimmerButton>
                 </form>
             </Layout>
+            <br/>
         </>
     )
 }

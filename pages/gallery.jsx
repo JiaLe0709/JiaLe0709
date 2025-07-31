@@ -28,7 +28,9 @@ const Gallery = ({posts}) => {
                 <div
                     className={`max-w-screen-md flex flex-col mx-auto p-4 pt-8 items-center space-y-4`}
                 >
-                    {posts.map((i, id) => (
+                    {posts
+                        .sort((a, b) => new Date(b.date) - new Date(a.date))
+                        .map((i, id) => (
                         <Card className="p-0 w-full max-w-lg shadow-none" key={id}>
                             <MagicCard
                                 gradientFrom={"#96BC3C"}
@@ -97,8 +99,6 @@ const Gallery = ({posts}) => {
                                         </div>
                                     </CardDescription>
                                 </CardHeader>
-
-
                             </MagicCard>
                         </Card>
                     ))}
