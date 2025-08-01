@@ -121,7 +121,7 @@ export default function Docks() {
                                 </span>
                             </TooltipTrigger>
                             <TooltipContent>
-                                <p>{'Theme:'}{theme?.charAt(0).toUpperCase() + theme?.slice(1)}</p>
+                                <p>{'Theme: '}{theme?.charAt(0).toUpperCase() + theme?.slice(1)}</p>
                             </TooltipContent>
                         </Tooltip>
                     </DockIcon>

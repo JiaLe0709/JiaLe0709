@@ -8,6 +8,7 @@ import 'react-photo-view/dist/react-photo-view.css';
 import prisma from "@/lib/prisma";
 import {Badge} from "@/components/ui/badge";
 import {ArrowRight, ImageIcon, MapPinned} from "lucide-react";
+import {useRouter} from "next/router";
 
 export async function getStaticProps() {
 
@@ -22,6 +23,8 @@ export async function getStaticProps() {
 }
 
 const Gallery = ({posts}) => {
+
+    const router = useRouter();
 
     return (
         <>
@@ -93,7 +96,7 @@ const Gallery = ({posts}) => {
                                             )}
                                         </div>
                                         <div onClick={() => {
-                                            //router.push(`/${i.id}`)
+                                            router.push(`/gallery/${i.id}`)
                                         }}>
                                             <ArrowRight className={'w-5 h-5 cursor-pointer'}/>
                                         </div>

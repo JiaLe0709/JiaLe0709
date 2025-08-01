@@ -4,6 +4,7 @@ import NProgress from 'nprogress'
 import {useRouter} from "next/router";
 import {useEffect} from "react";
 import ThemeProvider from "@/components/themeprovider";
+import {DatadogInit} from "@/lib/datadog";
 
 export default function App({Component, pageProps}) {
 
@@ -37,6 +38,7 @@ export default function App({Component, pageProps}) {
 
     return (
         <>
+            {(process.env.NEXT_PUBLIC_ENV) === "prod" && <DatadogInit />}
             <ThemeProvider
                 attribute="class"
                 defaultTheme="light"
