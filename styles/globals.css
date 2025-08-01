@@ -159,16 +159,6 @@
   }
 }
 
-@font-face {
-  font-family: Torus;
-  src: url('/torus.otf');
-}
-
-* {
-
-  font-family: Torus !important;
-}
-
 html {
   --c-bg: #111;
   --c-scrollbar-hover: #2c2b2b;

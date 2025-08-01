@@ -22,6 +22,7 @@ export async function getStaticProps() {
 }
 
 const Gallery = ({posts}) => {
+
     return (
         <>
             <Layout>
@@ -47,8 +48,8 @@ const Gallery = ({posts}) => {
                                                         <PhotoView
                                                             src={`${process.env.NEXT_PUBLIC_SOURCES_URL}/o/${img.sources}/${img.item}`}
                                                         >
-                                                            <div>
                                                                 <Image
+                                                                    loading={'lazy'}
                                                                     quality={100}
                                                                     src={`${process.env.NEXT_PUBLIC_SOURCES_URL}/o/${img.sources}/${img.item}`}
                                                                     alt={`Image ${id + 1}`}
@@ -57,7 +58,6 @@ const Gallery = ({posts}) => {
                                                                     unoptimized={true}
                                                                     height={200}
                                                                 />
-                                                            </div>
                                                         </PhotoView>
                                                     </CarouselItem>
                                                 ))}
