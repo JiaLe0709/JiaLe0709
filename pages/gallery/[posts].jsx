@@ -66,7 +66,7 @@ const Posts = ({post}) => {
             {post &&
                 post.map((i, id) => (
                     <div key={id}>
-                        <Layout title={`Image at ${i.location} || Jia Le's Gallery`}>
+                        <Layout title={`Image at ${i.location} ⋅ Jia Le's Gallery`}>
                             <div className="flex justify-center min-h-screen p-4">
                                 <div className="w-full max-w-md">
                                     <div key={id}>
@@ -80,13 +80,13 @@ const Posts = ({post}) => {
                                                     height={100}
                                                     unoptimized={true}
                                                 />
-                                                {`${new Date(i.date).getFullYear()}-${new Date(i.date).getMonth()}-${new Date(i.date).getDate()}`}
+                                                {new Date(i.date).getFullYear()}-{String(new Date(i.date).getMonth() + 1).padStart(2, '0')}-{String(new Date(i.date).getDate()).padStart(2, '0')}
                                             </h1>
                                             <div className={'flex gap-3 items-center'}>
                                                 <Send
                                                     onClick={() => {
                                                         const shareData = {
-                                                            title: 'Images 🐻💖',
+                                                            title: "Jia Le's Gallery 🐻💖",
                                                             text: `Image at ${i.location},\n on ${new Date(i.date).getFullYear()}-${String(new Date(i.date).getMonth() + 1).padStart(2, '0')}-${String(new Date(i.date).getDate()).padStart(2, '0')}\n`,
                                                             url: window.location.href,
                                                         };
@@ -133,7 +133,7 @@ const Posts = ({post}) => {
                                                     <PhotoView
                                                         src={`${process.env.NEXT_PUBLIC_SOURCES_URL}/o/${img.sources}/${img.item}`}
                                                     >
-                                                        <div>
+                                                        <div className={'bg-white p-[1.60px] rounded-2xl shadow-lg'}>
                                                             <Image
                                                                 quality={100}
                                                                 src={`${process.env.NEXT_PUBLIC_SOURCES_URL}/o/${img.sources}/${img.item}`}

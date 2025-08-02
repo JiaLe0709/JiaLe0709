@@ -106,6 +106,7 @@ const Gallery = ({posts}) => {
                         </Card>
                     ))}
                 </div>
+                <br/>
             </Layout>
         </>
     )
