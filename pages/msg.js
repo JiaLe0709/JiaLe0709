@@ -45,7 +45,7 @@ const Message = () => {
 
     return (
         <>
-            <Layout title={'Message'}>
+            <Layout title={"Jia Le's Pigeon"}>
                 <Toaster richColors={true} position={'top-center'}/>
                 <div
                     className={`max-w-screen-md flex flex-col mx-auto p-3`}

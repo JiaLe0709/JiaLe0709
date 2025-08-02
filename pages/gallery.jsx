@@ -28,7 +28,7 @@ const Gallery = ({posts}) => {
 
     return (
         <>
-            <Layout>
+            <Layout title={'Jia Le\'s Gallery'}>
                 <div
                     className={`max-w-screen-md flex flex-col mx-auto p-4 pt-8 items-center space-y-4`}
                 >
