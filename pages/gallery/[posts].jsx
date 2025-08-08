@@ -66,7 +66,11 @@ const Posts = ({post}) => {
             {post &&
                 post.map((i, id) => (
                     <div key={id}>
-                        <Layout title={`Image at ${i.location} ⋅ Jia Le's Gallery`}>
+                        <Layout
+                            path={router.asPath}
+                            title={`Image at ${i.location} ⋅ Jia Le's Gallery`}
+                            description={`Image at ${i.location} on ${new Date(i.date).getFullYear()}-${String(new Date(i.date).getMonth() + 1).padStart(2, '0')}-${String(new Date(i.date).getDate()).padStart(2, '0')}.`}
+                        >
                             <div className="flex justify-center min-h-screen p-4">
                                 <div className="w-full max-w-md">
                                     <div key={id}>

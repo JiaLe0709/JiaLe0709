@@ -33,6 +33,7 @@ export default function App({Component, pageProps}) {
     Router.events.on('routeChangeComplete', () => NProgress.done());
     Router.events.on('routeChangeError', () => NProgress.done());
     */
+
     NProgress.configure({showSpinner: true})
 
     return (

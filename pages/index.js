@@ -3,7 +3,10 @@ import Layout from "@/layouts/globals";
 
 export default function Home() {
     return (
-        <Layout>
+        <Layout
+            path={'/'}
+            description={"Hi, I'm Jia Le — welcome to my wonderland."}
+        >
             <div
                 className={` items-center justify-items-center p-8 `}
             >

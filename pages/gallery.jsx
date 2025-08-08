@@ -28,7 +28,11 @@ const Gallery = ({posts}) => {
 
     return (
         <>
-            <Layout title={'Jia Le\'s Gallery'}>
+            <Layout
+                path={'/gallery'}
+                title={'Jia Le\'s Gallery'}
+                description={"A wonderful memories and moments, captured through Jia Le's eyes. - Jia Le's Gallery"}
+            >
                 <div
                     className={`max-w-screen-md flex flex-col mx-auto p-4 pt-8 items-center space-y-4`}
                 >
