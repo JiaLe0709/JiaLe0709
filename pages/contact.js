@@ -51,7 +51,7 @@ const Message = () => {
                     className={`max-w-screen-md flex flex-col mx-auto p-3`}
                 >
                     <div className={'flex flex-col items-center justify-center space-y-4'}>
-                        <Image src={'/letters.avif'} alt={'Jia Le @ Letters Cat'} width={150} height={120}/>
+                        <Image src={'/pigeon.png'} alt={'Jia Le @ Letters Cat'} width={150} height={120}/>
                         <h3 className={'text-xl text-center font-extrabold'}>
                             {"Share your "}
                             <code className="bg-[#A6C145] relative rounded px-[0.3rem] py-[0.2rem] font-semibold"><span
