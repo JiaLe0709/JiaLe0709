@@ -2,12 +2,13 @@ import Docks from "@/components/magicui/docks";
 import Head from "next/head";
 import { FloatButton } from "antd";
 import localFont from "next/font/local";
+import Navbar from "@/components/app/navbar";
 
 const torus = localFont({
     src: "../fonts/torus.otf",
 });
 
-export default function Layout({ children, title, og, description, path }) {
+export default function Layout({ children, title, og, description, path, typeOfPage, navTitle }) {
     return (
         <>
             <Head>
@@ -36,15 +37,14 @@ export default function Layout({ children, title, og, description, path }) {
                 <div className="absolute right-0 top-0 h-[500px] w-[500px] -translate-x-[30%] translate-y-[20%] rounded-full  bg-lime-200 opacity-50 blur-[80px]" />
             </div>
             <div className="min-h-screen flex flex-col">
-                <main className={`flex-grow ${torus.className}`}>
+                <Navbar navtitle={navTitle || title} typeogpage={typeOfPage} />
+                <main className={` ${torus.className}`}>
+                    <br />
+                    <br />
+                    <br />
                     {children}
                 </main>
             </div>
-
-            <footer className={`sticky bottom-6 ${torus.className}`}>
-                <Docks />
-            </footer>
-
             <FloatButton.BackTop />
         </>
     );

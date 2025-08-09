@@ -46,7 +46,9 @@ const Message = () => {
     return (
         <>
             <Layout
+                navTitle={'Contact'}
                 path={'/contact'}
+                typeOfPage={'contact'}
                 title={"Jia Le's Pigeon"}
                 description={"Share your suggestions / bug reports through this page !"}
             >
@@ -55,7 +57,7 @@ const Message = () => {
                     className={`max-w-screen-md flex flex-col mx-auto p-3`}
                 >
                     <div className={'flex flex-col items-center justify-center space-y-4'}>
-                        <Image src={'/pigeon.png'} alt={'Pigeon icon'} width={150} height={120}/>
+                        <Image src={'/pigeon.avif'} alt={'Pigeon icon'} width={150} height={120}/>
                         <h3 className={'text-xl text-center font-extrabold'}>
                             {"Share your "}
                             <code className="bg-[#A6C145] relative rounded px-[0.3rem] py-[0.2rem] font-semibold"><span

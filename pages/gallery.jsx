@@ -29,7 +29,9 @@ const Gallery = ({posts}) => {
     return (
         <>
             <Layout
+                navTitle={'Gallery'}
                 path={'/gallery'}
+                typeOfPage={'gallery'}
                 title={'Jia Le\'s Gallery'}
                 description={"A wonderful memories and moments, captured through Jia Le's eyes. - Jia Le's Gallery"}
             >

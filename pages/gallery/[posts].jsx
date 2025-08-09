@@ -67,6 +67,8 @@ const Posts = ({post}) => {
                 post.map((i, id) => (
                     <div key={id}>
                         <Layout
+                            navTitle={'Gallery'}
+                            typeOfPage={'gallery'}
                             path={router.asPath}
                             title={`${i.location} ⋅ Jia Le's Gallery`}
                             description={`Image at ${i.location} on ${new Date(i.date).getFullYear()}-${String(new Date(i.date).getMonth() + 1).padStart(2, '0')}-${String(new Date(i.date).getDate()).padStart(2, '0')}.`}
@@ -135,6 +137,9 @@ const Posts = ({post}) => {
                                             {i.image.map((img, id) => (
                                                 <div key={id}>
                                                     <PhotoView
+                                                        styele={{
+                                                            zIndex: 9999,
+                                                        }}
                                                         src={`${process.env.NEXT_PUBLIC_SOURCES_URL}/o/${img.sources}/${img.item}`}
                                                     >
                                                         <div className={'bg-white p-[1.60px] rounded-2xl shadow-lg'}>
