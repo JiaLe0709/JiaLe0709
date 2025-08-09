@@ -11,12 +11,24 @@ export default function Layout({ children, title, og, description, path }) {
     return (
         <>
             <Head>
-                <meta property="description" content={description || ""} />
-                <meta property="og:image" content={og || "/og.jpg"}/>
-                <meta property="og:title" content={title || "Jia Le's Wonderland"}/>
-                <meta property="og:site_name" content="Jia Le's Wonderland"/>
-                <meta property="og:description" content={description || ""}/>
-                <meta property="og:url" content={`https://jiale.in${path || ""}`}/>
+                {/* Standard SEO */}
+                <meta name="description" content={description || "Hi, I'm Jia Le — welcome to my wonderland."} />
+                <meta property="description" content={description || "Hi, I'm Jia Le — welcome to my wonderland."}/>
+                <meta name="keywords" content={`${title}, Jia Le, Jiale`} />
+
+                {/* Open Graph */}
+                <meta property="og:title" content={title || "Jia Le's Wonderland"} />
+                <meta property="og:description" content={description || "Hi, I'm Jia Le — welcome to my wonderland."} />
+                <meta property="og:image" content={og || "https://jiale.in/og.jpg"} />
+                <meta property="og:url" content={`https://jiale.in${path || ""}`} />
+                <meta property="og:site_name" content="Jia Le's Wonderland" />
+
+                {/* Twitter */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={title || "Jia Le's Wonderland"} />
+                <meta name="twitter:description" content={description || "Hi, I'm Jia Le — welcome to my wonderland."} />
+                <meta name="twitter:image" content={og || "https://jiale.in/og.jpg"} />
+
                 <title>{title || "Jia Le's Wonderland"}</title>
             </Head>
             <div

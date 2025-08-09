@@ -25,7 +25,7 @@ const DATA = {
             },
             Message: {
                 name: "Message",
-                url: "/msg",
+                url: "/contact",
                 icon: Send
             },
         }

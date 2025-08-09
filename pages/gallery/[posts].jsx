@@ -68,7 +68,7 @@ const Posts = ({post}) => {
                     <div key={id}>
                         <Layout
                             path={router.asPath}
-                            title={`Image at ${i.location} ⋅ Jia Le's Gallery`}
+                            title={`${i.location} ⋅ Jia Le's Gallery`}
                             description={`Image at ${i.location} on ${new Date(i.date).getFullYear()}-${String(new Date(i.date).getMonth() + 1).padStart(2, '0')}-${String(new Date(i.date).getDate()).padStart(2, '0')}.`}
                         >
                             <div className="flex justify-center min-h-screen p-4">
