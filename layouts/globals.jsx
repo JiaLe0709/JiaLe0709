@@ -37,7 +37,7 @@ export default function Layout({ children, title, og, description, path, typeOfP
                 <div className="absolute right-0 top-0 h-[500px] w-[500px] -translate-x-[30%] translate-y-[20%] rounded-full  bg-lime-200 opacity-50 blur-[80px]" />
             </div>
             <div className="min-h-screen flex flex-col">
-                <Navbar navtitle={navTitle || title} typeogpage={typeOfPage} />
+                <Navbar navTitle={navTitle || title} typeogpage={typeOfPage} />
                 <main className={` ${torus.className}`}>
                     <br />
                     <br />
