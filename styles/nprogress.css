@@ -1,10 +1,16 @@
 /* Make clicks pass-through */
 html.dark {
+    --bg: #2F3133;
     --prgs-bar: #CDFC7A
 }
 
 :root {
-    --prgs-bar: #89a341
+    --bg: #FCF5EA;
+    --prgs-bar: #59A808
+}
+
+body {
+    background-color: var(--bg);
 }
 
 #nprogress {

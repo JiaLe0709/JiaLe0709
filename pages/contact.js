@@ -71,7 +71,7 @@ const Message = () => {
                     autoComplete="off"
                     onSubmit={sentMessage}
                 >
-                    <div className='max-w-screen-md grid sm:grid-cols-2 gap-3 mx-auto p-4 space-y-1'>
+                    <div className='max-w-screen-md grid sm:grid-cols-2 gap-3 mx-auto p-2'>
                         <div className={'space-y-2 '}>
                             <Label htmlFor='name' className={'text-[17px] '}>Name</Label>
                             <Input required id='name' name='name' type="text" placeholder="Name"/>
@@ -85,6 +85,8 @@ const Message = () => {
                             <Textarea required className='h-40' id='message' name='message'
                                       placeholder="Type your message here."/>
                         </div>
+                        <span>Or click here to <a className={'font-bold text-[#7B981E]'} href={`mailto:dev@jiale.in?subject=${encodeURIComponent('Bug report / Feature suggestion')}&body=${encodeURIComponent('Web URL / Path:\nBugs / Suggestion:\n')}`}
+                        >email</a> me.</span>
                     </div>
                     <Turnstile
                         siteKey={process.env.NEXT_PUBLIC_CF_SITE_KEY}

@@ -8,7 +8,10 @@ const NotFound = () => {
 
     return (
         <>
-        <Layout title={'Page Not Found !'}>
+        <Layout
+            navTitle={'Error'}
+            title={'Page Not Found !'}
+        >
             <div className="flex h-screen flex-col items-center  text-center p-3 pt-10 space-y-3">
                 <h1 className="text-6xl font-bold text-gray-800 dark:text-gray-100">404</h1>
                 <Image src={'/sleep.png'} alt={'404'} width={400} height={200} className={'rounded-md mt-2'}/>
