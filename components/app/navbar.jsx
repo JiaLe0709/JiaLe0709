@@ -4,7 +4,6 @@ import { ChevronDown, ChevronUp, Moon, Sun } from "lucide-react"
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { useTheme } from "next-themes"
-import ShinyText from "@/components/reactbits/ShinyText/ShinyText";
 
 export default function Navbar({ typeogpage, navTitle }) {
     const { theme, setTheme } = useTheme()
