@@ -12,7 +12,7 @@ export default function Home() {
             <div
                 className={` items-center justify-items-center p-8 `}
             >
-                <Image src={'/favicon.avif'} alt={'Logo'} width={210} height={210} quality={100}/>
+                <Image src={'/favicon.png'} alt={'Logo'} width={210} height={210} quality={100}/>
                 <h1>Hi, I am Jia Le</h1>
             </div>
         </Layout>

@@ -70,7 +70,7 @@ export default function Navbar({ typeogpage, navTitle }) {
             }}
         >
             <div className="flex items-center gap-2">
-                <Image src="/favicon.avif" alt="logo" width={44} height={44} />
+                <Image src="/favicon.png" alt="logo" width={44} height={44} />
                 <span className=" font-bold text-black dark:text-slate-200 whitespace-nowrap">{navTitle}</span>
             </div>
 
