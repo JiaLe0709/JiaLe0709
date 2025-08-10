@@ -73,8 +73,10 @@ const Posts = ({post}) => {
                             title={`${i.location} ⋅ Jia Le's Gallery`}
                             description={`Image at ${i.location} on ${new Date(i.date).getFullYear()}-${String(new Date(i.date).getMonth() + 1).padStart(2, '0')}-${String(new Date(i.date).getDate()).padStart(2, '0')}.`}
                         >
-                            <div className="flex justify-center min-h-screen p-4">
-                                <div className="w-full max-w-md">
+                            <div
+                                className={`max-w-screen-md flex flex-col mx-auto p-3 items-center space-y-4`}
+                            >
+                                <div className="w-full max-w-xl">
                                     <div key={id}>
                                         <div className="flex justify-between items-center mb-1 mt-2">
                                             <h1 className="text-t-green font-bold text-2xl flex items-center">
