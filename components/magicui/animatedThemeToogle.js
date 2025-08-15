@@ -1,18 +1,21 @@
 import { Moon, Sun } from "lucide-react"
-import { useState, useRef } from "react"
+import { useRef } from "react"
 import { flushSync } from "react-dom"
 import { cn } from "@/lib/utils"
+import { useTheme } from "next-themes"
 
 export default function AnimatedThemeToggler({ className }) {
-    const [isDarkMode, setIsDarkMode] = useState(false)
+
+    const { theme, setTheme } = useTheme()
+
     const buttonRef = useRef(null)
+
     const changeTheme = async () => {
         if (!buttonRef.current) return
 
         await document.startViewTransition(() => {
             flushSync(() => {
-                const dark = document.documentElement.classList.toggle("dark")
-                setIsDarkMode(dark)
+                setTheme(theme === "dark" ? "light" : "dark")
             })
         }).ready
 
@@ -45,7 +48,7 @@ export default function AnimatedThemeToggler({ className }) {
     }
     return (
         <button ref={buttonRef} onClick={changeTheme} className={cn(className)}>
-            {isDarkMode ? <Moon className={'size-5 text-blue-400'}/> : <Sun className={'size-5 text-amber-500'}/>}
+            {theme === 'dark' ? <Moon className={'size-5 text-blue-400'}/> : <Sun className={'size-5 text-amber-500'}/>}
         </button>
     )
 }
