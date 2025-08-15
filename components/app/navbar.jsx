@@ -4,6 +4,7 @@ import { ChevronDown, ChevronUp, Moon, Sun } from "lucide-react"
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { useTheme } from "next-themes"
+import AnimatedThemeToggler from "@/components/magicui/animatedThemeToogle";
 
 export default function Navbar({ typeogpage, navTitle }) {
     const { theme, setTheme } = useTheme()
@@ -50,7 +51,7 @@ export default function Navbar({ typeogpage, navTitle }) {
                 flex items-center justify-between gap-4 `}
         >
             <div className="flex items-center gap-2">
-                <Image src="/favicon.png" alt="logo" width={44} height={44} />
+                <Image src="https://jiale.imglab-cdn.net/favicon.png?format=avif" alt="logo" width={44} height={44} unoptimized={true}/>
                 <span className="font-bold text-black dark:text-slate-200 whitespace-nowrap">{navTitle}</span>
             </div>
 
@@ -73,13 +74,7 @@ export default function Navbar({ typeogpage, navTitle }) {
                             <Link href="/contact" className={typeogpage?.toString() === "contact" ? "dark:text-lime-300 font-bold text-[#59A808]" : ""}>Contact</Link>
                         </li>
                         <li>
-                            <span
-                                className="cursor-pointer"
-                                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                            >
-                                <Sun className="size-5 dark:hidden text-amber-500" />
-                                <Moon className="size-5 hidden dark:block text-blue-400" />
-                            </span>
+                            <AnimatedThemeToggler className={'items-center size-5 justify-center flex cursor-pointer'}/>
                         </li>
                     </ul>
                 </div>
@@ -161,16 +156,7 @@ export default function Navbar({ typeogpage, navTitle }) {
                             </span>
                         </li>
                         <li>
-                            <span
-                                className="cursor-pointer"
-                                onClick={() => {
-                                    setTheme(theme === "dark" ? "light" : "dark")
-                                    setShowNav(false)
-                                }}
-                            >
-                                <Sun className="size-5 dark:hidden text-amber-500" />
-                                <Moon className="size-5 hidden dark:block text-blue-400" />
-                            </span>
+                            <AnimatedThemeToggler />
                         </li>
                     </ul>
                 </div>

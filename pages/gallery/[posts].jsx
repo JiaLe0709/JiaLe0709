@@ -82,7 +82,7 @@ const Posts = ({post}) => {
                                             <h1 className="text-t-green font-bold text-2xl flex items-center">
                                                 <Image
                                                     alt="Icon"
-                                                    src="/Teddy_Bear.png"
+                                                    src="https://jiale.imglab-cdn.net/Teddy_Bear.png?format=png"
                                                     className="mr-2 w-8 h-8"
                                                     width={100}
                                                     height={100}
