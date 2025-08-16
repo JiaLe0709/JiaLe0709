@@ -1,36 +1,30 @@
 import { Moon, Sun } from "lucide-react"
-import { useRef } from "react"
 import { flushSync } from "react-dom"
-import { cn } from "@/lib/utils"
 import { useTheme } from "next-themes"
+import { useState, useEffect } from "react"
 
 export default function AnimatedThemeToggler({ className }) {
+    const {setTheme, resolvedTheme } = useTheme()
+    const [mounted, setMounted] = useState(false)
 
-    const { theme, setTheme } = useTheme()
+    useEffect(() => setMounted(true), [])
 
-    const buttonRef = useRef(null)
-
-    const changeTheme = async () => {
-        if (!buttonRef.current) return
+    const changeTheme = async (e) => {
+        const buttonEl = e.currentTarget
 
         await document.startViewTransition(() => {
             flushSync(() => {
-                setTheme(theme === "dark" ? "light" : "dark")
+                setTheme(resolvedTheme === "dark" ? "light" : "dark")
             })
         }).ready
 
-        const {
-            top,
-            left,
-            width,
-            height
-        } = buttonRef.current.getBoundingClientRect()
-        const y = top + height / 2
-        const x = left + width / 2
+        const rect = buttonEl.getBoundingClientRect()
+        const x = rect.left + rect.width / 2
+        const y = rect.top + rect.height / 2
 
-        const right = window.innerWidth - left
-        const bottom = window.innerHeight - top
-        const maxRad = Math.hypot(Math.max(left, right), Math.max(top, bottom))
+        const right = window.innerWidth - rect.left
+        const bottom = window.innerHeight - rect.top
+        const maxRad = Math.hypot(Math.max(rect.left, right), Math.max(rect.top, bottom))
 
         document.documentElement.animate(
             {
@@ -46,9 +40,21 @@ export default function AnimatedThemeToggler({ className }) {
             }
         )
     }
+
+    if (!mounted) {
+        return (
+            <button disabled>
+            </button>
+        )
+    }
+
     return (
-        <button ref={buttonRef} onClick={changeTheme} className={cn(className)}>
-            {theme === 'dark' ? <Moon className={'size-5 text-blue-400'}/> : <Sun className={'size-5 text-amber-500'}/>}
+        <button onClick={changeTheme} className={className}>
+            {resolvedTheme === "dark" ? (
+                <Moon className="size-5 text-blue-400" />
+            ) : (
+                <Sun className="size-5 text-amber-500" />
+            )}
         </button>
     )
 }

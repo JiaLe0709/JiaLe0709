@@ -7,6 +7,7 @@ import {ImageIcon, MapPinned, X, Send} from "lucide-react";
 import {useRouter} from "next/router";
 import React from 'react';
 import 'react-photo-view/dist/react-photo-view.css';
+import dynamic from "next/dynamic";
 
 export async function getStaticPaths() {
 
@@ -56,6 +57,13 @@ export async function getStaticProps({params}) {
         }
     }
 }
+
+const Comment = dynamic(
+    () => {
+        return import('@/components/app/comments')
+    },
+    { ssr: false }
+)
 
 const Posts = ({post}) => {
 
@@ -161,7 +169,8 @@ const Posts = ({post}) => {
                                             ))}
                                         </PhotoProvider>
                                     </div>
-
+                                    <Comment/>
+                                    <br/>
                                 </div>
                             </div>
                         </Layout>
