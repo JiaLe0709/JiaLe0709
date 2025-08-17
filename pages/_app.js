@@ -1,5 +1,7 @@
 import "@/styles/globals.css";
 import "@/styles/nprogress.css";
+import '@/styles/notionOverride.css'
+import '@/styles/prism.css'
 import NProgress from 'nprogress'
 import {useRouter} from "next/router";
 import {useEffect} from "react";

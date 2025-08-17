@@ -1,0 +1,187 @@
+@reference "tailwindcss";
+
+/* Base text */
+.notion {
+    color: inherit;
+    overflow-wrap: break-word;
+}
+.notion,
+.notion-text,
+.notion-quote,
+.notion-h-title {
+    @apply leading-8 p-0 my-3;
+}
+
+.notion-page-link {
+    color: inherit;
+}
+
+/* Lists */
+.notion-list {
+    @apply w-full;
+}
+.notion-list li,
+.notion-list ol {
+    padding: 0;
+}
+
+/* Toggles */
+.notion-toggle {
+    @apply w-full;
+}
+
+/* Tables */
+.notion-simple-table {
+    @apply self-center border-collapse;
+}
+.notion-simple-table td {
+    @apply border border-gray-300 px-3 py-2;
+}
+.notion-simple-table-row {
+    @apply bg-gray-50;
+}
+.dark .notion-simple-table td {
+    @apply border border-gray-800;
+}
+.dark .notion-simple-table-row {
+    @apply bg-[#1e1e20] text-white;
+}
+
+/* Icons */
+svg.notion-page-icon {
+    @apply hidden;
+}
+svg + .notion-page-title-text {
+    @apply border-b-0;
+}
+
+/* Page layout */
+.notion-full-width {
+    @apply px-0;
+}
+.notion-page {
+    @apply w-auto px-0;
+}
+
+/* Quotes */
+.notion-quote {
+    padding: 0.2em 0.9em;
+    font-size: 1em;
+    line-height: 1.5rem;
+}
+
+/* Horizontal rule */
+.notion-hr {
+    @apply border-b-2 border-b-gray-200 dark:border-b-gray-600;
+}
+
+/* Links */
+.notion-link {
+    @apply relative border-b-2 bg-origin-border bg-no-repeat text-blue-500 border-b-gray-200 dark:text-blue-400 dark:border-b-gray-600;
+    background-position: 50% 100%;
+    background-size: 0 0.1rem;
+}
+.notion-link:focus,
+.notion-link:hover {
+    @apply border-transparent bg-no-repeat;
+    background-image: linear-gradient(90.68deg, #b439df 0.26%, #a28181 102.37%);
+    background-position: 0 100%;
+    background-size: 100% 0.1rem;
+    transition-property: background-position, background-size;
+    transition-duration: 200ms;
+}
+
+/* Table of contents */
+@keyframes toc-fade-in-animation {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.toc-fade-in {
+    animation: toc-fade-in-animation 0.5s ease-in;
+}
+.notion-table-of-contents-item {
+    @apply rounded-lg px-2 dark:text-gray-200;
+}
+
+/* Code blocks (console style) */
+.notion-code {
+    @apply rounded-xl overflow-hidden my-6 shadow-md;
+    background: #1e1e1e; /* terminal dark */
+    color: #d4d4d4;
+    border: 1px solid #333;
+    position: relative;
+}
+/* Fake title bar */
+.notion-code::before {
+    content: "";
+    display: block;
+    height: 28px;
+}
+.notion-code::after {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: 12px;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    background: #ff5f56;
+    box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
+}
+/* Code text */
+.notion-code pre {
+    @apply p-4 text-sm leading-6 font-mono;
+    background: transparent !important;
+    overflow-x: auto;
+    white-space: pre;
+}
+
+/* Assets */
+.notion-viewport {
+    z-index: -10;
+}
+.notion-asset-caption {
+    @apply text-center text-gray-500 dark:text-gray-400;
+}
+
+/* Collections */
+.notion-collection {
+    @apply max-w-full;
+}
+.notion-collection > .notion-collection-header {
+    @apply px-0;
+}
+.notion-collection > .notion-table {
+    @apply max-w-full;
+}
+.notion-collection > .notion-table > .notion-table-view {
+    @apply px-0;
+}
+.notion-collection-view-type,
+.notion-collection-row {
+    @apply hidden;
+}
+
+/* Fix Notion bookmark (GitHub, etc.) */
+.notion-bookmark {
+    @apply border rounded-md overflow-hidden transition-colors;
+}
+.notion-bookmark:hover {
+    @apply bg-gray-100 dark:bg-gray-800;
+}
+/* Title */
+.notion-bookmark-title {
+    @apply text-black dark:text-white font-medium;
+}
+/* Description (force override inline style) */
+.notion-bookmark-description {
+    @apply text-sm;
+    color: #4b5563 !important; /* gray-600 */
+}
+.dark .notion-bookmark-description {
+    color: #9ca3af !important; /* gray-400 */
+}
+/* Link */
+.notion-bookmark-link {
+    @apply text-blue-600 dark:text-blue-400 text-sm;
+}

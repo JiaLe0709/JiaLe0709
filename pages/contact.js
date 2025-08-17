@@ -8,6 +8,7 @@ import Image from "next/image";
 import {Send, Loader2Icon} from "lucide-react";
 import {toast, Toaster} from "sonner";
 import {Turnstile} from '@marsidev/react-turnstile'
+import {Highlighter} from "@/components/magicui/highlighter";
 
 const Message = () => {
 
@@ -59,10 +60,9 @@ const Message = () => {
                     <div className={'flex flex-col items-center justify-center space-y-4'}>
                         <Image src={'https://jiale.imglab-cdn.net/pigeon.png?format=avif'} alt={'Pigeon icon'} width={150} height={120} unoptimized={true}/>
                         <h3 className={'text-xl text-center font-extrabold'}>
-                            {"Share your "}
-                            <code className="bg-[#A6C145] relative rounded px-[0.3rem] py-[0.2rem] font-semibold"><span
-                                className={' text-[#3F1800]'}>suggestions</span></code>
-                            {" through this page !"}
+                            {"Share your  "}
+                            <Highlighter color={'#87CEFA'}><span className={'text-black'}>suggestions</span></Highlighter>
+                            {"  through this page !"}
                         </h3>
                     </div>
                 </div>

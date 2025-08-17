@@ -194,3 +194,27 @@ html {
   animation: none;
   mix-blend-mode: normal;
 }
+
+.mecha-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.mecha-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+          45deg,
+          rgba(132,204,22,0.3) 0 2px,
+          rgba(132,204,22,0.0) 2px 10px
+  );
+  animation: mechaMove 2s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes mechaMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 100% 100%; }
+}

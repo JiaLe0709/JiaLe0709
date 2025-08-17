@@ -10,6 +10,7 @@ const Config = {
         categoryId: 'DIC_kwDOPe0JDc4CuPHS',
         dataMapping: 'pathname',
     },
+    sortByDate: false
 }
 
 module.exports = Config;

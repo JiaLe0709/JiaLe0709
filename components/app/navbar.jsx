@@ -42,12 +42,12 @@ export default function Navbar({ typeogpage, navTitle }) {
         <nav
             style={{
                 position: "fixed",
-                zIndex: 1,
+                zIndex: 2,
                 isolation: "isolate",
             }}
             className={`select-none font-bold fixed top-4 w-[66%] ${showMax90 && 'w-[90%]'} mx-auto left-1/2 -translate-x-1/2
-                border-t-2 border-l-2 border-r-5 border-b-5 bg-white border-black text-black
-                dark:bg-black dark:text-slate-50 rounded-full font-mono h-14 p-5 overflow-visible max-w-7xl
+                border-t-3 border-l-3 border-r-6 border-b-6 bg-white border-black text-black
+                dark:bg-[#191919] dark:text-slate-50 rounded-full font-mono h-14 p-5 overflow-visible max-w-7xl
                 flex items-center justify-between gap-4 `}
         >
             <div className="flex items-center gap-2">
