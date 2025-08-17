@@ -3,8 +3,6 @@ import {getAllPosts} from "@/lib/notion/getAllPosts";
 import {getPostBlocks} from "@/lib/notion/getPostBlocks";
 import {NotionRenderer} from "react-notion-x";
 import dynamic from "next/dynamic";
-import 'react-notion-x/src/styles.css'
-import 'katex/dist/katex.min.css'
 
 const Code = dynamic(() =>
     import("react-notion-x/build/third-party/code").then(m => m.Code)

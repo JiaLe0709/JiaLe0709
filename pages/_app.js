@@ -1,7 +1,5 @@
 import "@/styles/globals.css";
 import "@/styles/nprogress.css";
-import '@/styles/notionOverride.css'
-import '@/styles/prism.css'
 import NProgress from 'nprogress'
 import {useRouter} from "next/router";
 import {useEffect} from "react";
@@ -30,6 +28,12 @@ export default function App({Component, pageProps}) {
         }
     }, [router])
 
+    if (router.asPath.startsWith('/blog/')) {
+        import('react-notion-x/src/styles.css')
+        import('@/styles/prism.css')
+        import('katex/dist/katex.min.css')
+        import('@/styles/notionOverride.css')
+    }
     /*
     Router.events.on('routeChangeStart', () => NProgress.start());
     Router.events.on('routeChangeComplete', () => NProgress.done());
