@@ -1,3 +1,5 @@
+permissions:
+  contents: read
 name: auto-update-cron
 on:
   workflow_dispatch:
