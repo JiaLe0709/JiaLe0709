@@ -141,7 +141,7 @@ svg + .notion-page-title-text {
     z-index: -10;
 }
 .notion-asset-caption {
-    @apply text-center text-gray-500 dark:text-gray-400;
+    @apply text-center text-[#F18E20] ;
 }
 
 /* Collections */
@@ -183,5 +183,9 @@ svg + .notion-page-title-text {
 }
 /* Link */
 .notion-bookmark-link {
-    @apply text-blue-600 dark:text-blue-400 text-sm;
+    @apply text-[#51A2FF] text-sm;
+}
+
+.notion-code-copy-button, .notion-code-copy {
+    z-index: 0;
 }

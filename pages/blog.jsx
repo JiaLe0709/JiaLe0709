@@ -53,7 +53,7 @@ export default function Blog({posts}) {
             title={'Jia Le\'s Blog'}
             description={"A wonderful things in the world. - Jia Le's Blog"}>
             <div className="max-w-screen-md flex flex-col mx-auto pr-4 pl-4 items-center">
-                <div className="w-full max-w-2xl">
+                <div className="w-full max-w-2xl space-y-4">
                     <br/>
                     {posts.map((post, index) => (
                         <motion.div
