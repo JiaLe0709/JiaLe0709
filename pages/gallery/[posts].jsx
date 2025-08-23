@@ -81,6 +81,7 @@ const Posts = ({post}) => {
                             title={`${i.location} ⋅ Jia Le's Gallery`}
                             description={`Image at ${i.location} on ${new Date(i.date).getFullYear()}-${String(new Date(i.date).getMonth() + 1).padStart(2, '0')}-${String(new Date(i.date).getDate()).padStart(2, '0')}.`}
                         >
+                            <br/>
                             <div
                                 className={`max-w-screen-md flex flex-col mx-auto p-3 items-center space-y-4`}
                             >

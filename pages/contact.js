@@ -53,6 +53,7 @@ const Message = () => {
                 title={"Jia Le's Pigeon"}
                 description={"Share your suggestions / bug reports through this page !"}
             >
+                <br/>
                 <Toaster richColors={true} position={'top-center'}/>
                 <div
                     className={`max-w-screen-md flex flex-col mx-auto p-3`}

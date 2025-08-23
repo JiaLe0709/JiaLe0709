@@ -218,3 +218,15 @@ html {
   0% { background-position: 0 0; }
   100% { background-position: 100% 100%; }
 }
+
+.notion-collection-page-properties {
+  display: none !important;
+}
+
+.notion-file-icon, .notion-external-image, .notion-external-title {
+  @apply dark:invert-[1];
+}
+
+.medium-zoom-image {
+  @apply  rounded-2xl;
+}

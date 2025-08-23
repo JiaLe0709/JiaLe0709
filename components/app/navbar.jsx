@@ -91,8 +91,8 @@ export default function Navbar({ typeogpage, navTitle }) {
             )}
 
             {isMobile && showNav && (
-                <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-black
-                border-t-2 border-l-2 border-r-5 border-b-5 border-black rounded-3xl p-4
+                <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-[#191919]
+                border-t-2 border-l-2 border-r-6 border-b-6 border-black rounded-3xl p-4
                 max-h-[calc(100vh-6rem)] overflow-y-auto">
                     <ul className="flex flex-col items-center gap-4">
                         <li>

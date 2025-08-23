@@ -88,9 +88,9 @@ export default function BlogPost({post, blockMap}) {
                 title={`${post?.title} ⋅ Jia Le's Blog`}
                 description={post?.summary}>
                 <div
-                    className={`max-w-screen-md flex flex-col mx-auto pr-4 pl-4 items-center `}
+                    className={`max-w-screen-lg flex flex-col mx-auto pr-4 pl-4 items-center`}
                 >
-                    <div className="w-full max-w-2xl">
+                    <div className="w-full max-w-3xl">
                         <NotionRenderer
                             pageTitle={post?.title}
                             frontMatter={post}
