@@ -65,7 +65,7 @@ export default function Blog({posts}) {
                             }}
                             onClick={() => router.push(`/blog/${post.slug}`)}
                             key={index}
-                            className="relative w-full max-w-2xl bg-white rounded-2xl border-black border-2 border-b-8 border-r-8 dark:bg-[#191919] border-t-3 border-l-3 p-4 flex flex-col md:flex-row cursor-pointer overflow-hidden group glow-hover"
+                            className="relative w-full max-w-2xl bg-white rounded-2xl border-black border-2 border-b-7 border-r-7 dark:bg-[#191919] border-t-3 border-l-3 p-4 flex flex-col md:flex-row cursor-pointer overflow-hidden group glow-hover"
                         >
                             <div className="relative z-10 inline-block space-y-2">
                                 <h1 className="text-2xl font-bold">
@@ -80,7 +80,7 @@ export default function Blog({posts}) {
                                         <Pencil/> {post.count} Words
                                     </Badge>
                                     <Badge className="bg-lime-200 text-black h-6 font-bold text-[12px] inline-flex items-center gap-1">
-                                        <Clock/> {(post.count / 200) < 1 ? '1' : (post.count / 200)} min
+                                        <Clock/> {(post.count / 200) < 1 ? '1' : (post.count / 200).toFixed(2)} min
                                     </Badge>
                                 </div>
                                 <TruncatedText text={post.summary} limit={10} />
