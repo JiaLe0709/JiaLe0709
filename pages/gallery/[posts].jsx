@@ -111,11 +111,11 @@ const Posts = ({post}) => {
                                                     }}
                                                     className={'text-cyan-400 w-5 h-5 cursor-pointer '}
                                                 />
-                                                <p onClick={() => {
+                                                {/*<p onClick={() => {
                                                     router.push('/gallery')
                                                 }} className={'flex'}>
                                                     <X className={'text-red-400 w-7 h-7 cursor-pointer font-bold ml-1'}/>
-                                                </p>
+                                                </p>*/}
                                             </div>
                                         </div>
                                         <div className={'flex gap-1 mt-1 mb-5 justify-between'}>
@@ -153,7 +153,7 @@ const Posts = ({post}) => {
                                                         }}
                                                         src={`${process.env.NEXT_PUBLIC_SOURCES_URL}/o/${img.sources}/${img.item}`}
                                                     >
-                                                        <div className={'bg-white p-[1.60px] rounded-2xl shadow-lg'}>
+                                                        <div className={'bg-white dark:bg-[#191919] p-[1.60px] rounded-2xl shadow-lg'}>
                                                             <Image
                                                                 quality={100}
                                                                 src={`${process.env.NEXT_PUBLIC_SOURCES_URL}/o/${img.sources}/${img.item}`}

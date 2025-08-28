@@ -49,12 +49,12 @@ export default function Projects({posts}) {
                                     <div className="pt-4">
                                         <InteractiveHoverButton
                                             className={'cursor-pointer'}
-                                            onClick={() => router.push(p.project_url)}
+                                            onClick={() =>window.open(p.project_url, '_blank')}
                                         >
                                             Code
                                         </InteractiveHoverButton>
                                         <InteractiveHoverButton
-                                            onClick={() => router.push(p.live_demo)}
+                                            onClick={() => window.open(p.live_demo, '_blank')}
                                             className={'ml-4 cursor-pointer'}
                                         >
                                             Demo
