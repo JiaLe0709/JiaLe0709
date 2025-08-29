@@ -44,7 +44,8 @@ export default function Projects({posts}) {
                                     className={'rounded-xl aspect-video object-cover mb-4 md:mb-0 md:mr-4 w-full md:w-65 max-w-sm md:max-w-none'}
                                 />
                                 <div className="flex-1">
-                                    <h2 className={'text-2xl font-bold'}>{p.title}</h2>
+                                    <h2 className={'text-2xl font-bold'}>{p.icon} {p.title}</h2>
+                                    <br/>
                                     <p className={'text-gray-600 dark:text-gray-200'}>{p.summary}</p>
                                     <div className="pt-4">
                                         <InteractiveHoverButton

@@ -230,3 +230,13 @@ html {
 .medium-zoom-image {
   border-radius: 10px !important;
 }
+
+::selection {
+  background-color: #b5ff6d;
+  color: #000000;
+}
+
+::-moz-selection {
+  background-color: #b5ff6d;
+  color: #000000;
+}

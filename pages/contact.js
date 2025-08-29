@@ -62,7 +62,7 @@ const Message = () => {
                         <Image src={'https://jiale.imglab-cdn.net/pigeon.png?format=avif'} alt={'Pigeon icon'} width={150} height={120} unoptimized={true}/>
                         <h3 className={'text-xl text-center font-extrabold'}>
                             {"Share your  "}
-                            <Highlighter color={'#87CEFA'}><span className={'text-black'}>suggestions</span></Highlighter>
+                            <Highlighter color={'#a5d619'} action={'underline'} className={'ml-2 mr-2'}><span className={''}>suggestions</span></Highlighter>
                             {"  through this page !"}
                         </h3>
                     </div>
@@ -86,7 +86,7 @@ const Message = () => {
                             <Textarea required className='h-40' id='message' name='message'
                                       placeholder="Type your message here."/>
                         </div>
-                        <span>Or click here to <a className={'font-bold text-[#7B981E]'} href={`mailto:dev@jiale.in?subject=${encodeURIComponent('Bug report / Feature suggestion')}&body=${encodeURIComponent('Web URL / Path:\nBugs / Suggestion:\n')}`}
+                        <span>Or click here to <a className={'font-bold text-[#7B981E] dark:text-[#b5ff6d]'} href={`mailto:dev@jiale.in?subject=${encodeURIComponent('Bug report / Feature suggestion')}&body=${encodeURIComponent('Web URL / Path:\nBugs / Suggestion:\n')}`}
                         >email</a> me.</span>
                     </div>
                     <Turnstile

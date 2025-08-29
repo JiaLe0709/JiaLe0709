@@ -85,7 +85,7 @@ const Posts = ({post}) => {
                             <div
                                 className={`max-w-screen-md flex flex-col mx-auto p-3 items-center space-y-4`}
                             >
-                                <div className="w-full max-w-xl">
+                                <div className="w-full max-w-2xl">
                                     <div key={id}>
                                         <div className="flex justify-between items-center mb-1 mt-2">
                                             <h1 className="text-t-green font-bold text-2xl flex items-center">
@@ -153,7 +153,7 @@ const Posts = ({post}) => {
                                                         }}
                                                         src={`${process.env.NEXT_PUBLIC_SOURCES_URL}/o/${img.sources}/${img.item}`}
                                                     >
-                                                        <div className={'bg-white dark:bg-[#191919] p-[1.60px] rounded-2xl shadow-lg'}>
+                                                        <div className={'p-[1.60px] rounded-2xl shadow-lg'}>
                                                             <Image
                                                                 quality={100}
                                                                 src={`${process.env.NEXT_PUBLIC_SOURCES_URL}/o/${img.sources}/${img.item}`}

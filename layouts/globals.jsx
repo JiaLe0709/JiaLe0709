@@ -29,7 +29,7 @@ export default function Layout({ children, title, og, description, path, typeOfP
                 <meta name="twitter:title" content={title || "Jia Le's Wonderland"} />
                 <meta name="twitter:description" content={description || "Hi, I'm Jia Le — welcome to my wonderland."} />
                 <meta name="twitter:image" content={og || "https://jiale.in/og.jpg"} />
-
+                <link rel="manifest" href="/manifest.json" />
                 <title>{title || "Jia Le's Wonderland"}</title>
             </Head>
             <div
