@@ -1,5 +1,4 @@
 import Layout from "@/layouts/globals";
-import {getPostBlocks} from "@/lib/notion/getPostBlocks";
 import {getAllPosts} from "@/lib/notion";
 import {Badge} from "@/components/ui/badge";
 import {useRouter} from "next/router";
@@ -10,25 +9,14 @@ import React from "react";
 
 export async function getStaticProps() {
     const posts = await getAllPosts({onlyPost: true})
-    const heros = await getAllPosts({onlyHidden: true})
-    const hero = heros.find((t) => t.slug === 'index')
-
-    let blockMap
-    try {
-        blockMap = await getPostBlocks(hero.id)
-    } catch (err) {
-        console.error(err)
-        return {props: {post: null, blockMap: null, posts: []}}
-    }
 
     const sanitizedPosts = posts.map((p) => ({
         ...p,
-        page_cover: p.page_cover ?? null
+        //page_cover: p.page_cover ?? null
     }))
 
     return {
         props: {
-            page: 1,
             posts: sanitizedPosts,
         },
         revalidate: 1,

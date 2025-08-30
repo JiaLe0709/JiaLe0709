@@ -45,6 +45,8 @@ export async function getStaticProps({ params: { slug } }) {
     const posts = await getAllPosts({ onlyPost: true });
     const post = posts.find((t) => t.slug === slug);
 
+    //console.log(post)
+
     if (!post) {
         return {
             notFound: true

@@ -1,13 +1,11 @@
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { ChevronDown, ChevronUp, Moon, Sun } from "lucide-react"
+import { ChevronDown, ChevronUp } from "lucide-react"
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { useTheme } from "next-themes"
 import AnimatedThemeToggler from "@/components/magicui/animatedThemeToogle";
 
 export default function Navbar({ typeogpage, navTitle }) {
-    const { theme, setTheme } = useTheme()
     const [showNav, setShowNav] = useState(false)
     const [isMobile, setIsMobile] = useState(false)
     const [showMax90, setShowMax90] = useState(false)
@@ -47,12 +45,12 @@ export default function Navbar({ typeogpage, navTitle }) {
             }}
             className={`select-none font-bold fixed top-4 w-[66%] ${showMax90 && 'w-[90%]'} mx-auto left-1/2 -translate-x-1/2
                 border-t-3 border-l-3 border-r-6 border-b-6 bg-white border-black text-black
-                dark:bg-[#191919] dark:text-slate-50 rounded-full font-mono h-14 p-5 overflow-visible max-w-7xl
+                dark:bg-[#191919] dark:text-slate-50 rounded-full h-14 p-5 overflow-visible max-w-7xl
                 flex items-center justify-between gap-4 `}
         >
             <div className="flex items-center gap-2">
                 <Image src="https://jiale.imglab-cdn.net/favicon.png?format=avif" alt="logo" width={44} height={44} unoptimized={true}/>
-                <span className="font-bold text-black dark:text-slate-200 whitespace-nowrap">{navTitle}</span>
+                <span className="text-black dark:text-slate-200 whitespace-nowrap">{navTitle}</span>
             </div>
 
             {!isMobile ? (

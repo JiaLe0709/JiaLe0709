@@ -5,18 +5,23 @@ import {PhotoProvider, PhotoView} from "react-photo-view";
 import {Carousel, CarouselContent, CarouselItem} from "@/components/ui/carousel";
 import {MagicCard} from "@/components/magicui/magic-card";
 import 'react-photo-view/dist/react-photo-view.css';
-import prisma from "@/lib/prisma";
+//import prisma from "@/lib/prisma";
 import {Badge} from "@/components/ui/badge";
 import {ArrowRight, ImageIcon, MapPinned} from "lucide-react";
 import {useRouter} from "next/router";
+import {getAllPosts} from "@/lib/notion";
+import FormattedDate from "@/components/app/FormattedDate";
 
 export async function getStaticProps() {
 
-    const posts = await prisma.posts.findMany();
+    const posts = await getAllPosts({onlyGallery: true});
+    //const DB = await prisma.posts.findMany();
+
+    //console.log(posts)
 
     return {
         props: {
-            posts: JSON.parse(JSON.stringify(posts))
+            posts: posts
         },
         revalidate: 10,
     };
@@ -52,7 +57,7 @@ const Gallery = ({posts}) => {
                                     <Carousel className="w-full">
                                         <CarouselContent>
                                             <PhotoProvider>
-                                                {Array.isArray(i.image) && i.image.map((img, id) => (
+                                                {JSON.parse(i.image).map((img, id) => (
                                                     <CarouselItem key={id}>
                                                         <PhotoView
                                                             src={`${process.env.NEXT_PUBLIC_SOURCES_URL}/o/${img.sources}/${img.item}`}
@@ -76,12 +81,12 @@ const Gallery = ({posts}) => {
                                 </CardContent>
                                 <CardHeader className={'pl-5 pr-5 pt-2 pb-3'}>
                                     <CardTitle className={'flex gap-2 items-center'}>
-                                        <p className={'text-xl'}>{`${new Date(i.date).getFullYear()}-${String(new Date(i.date).getMonth() + 1).padStart(2, '0')}-${String(new Date(i.date).getDate()).padStart(2, '0')}`}</p>
+                                        <p className={'text-xl'}>{/*`${new Date(i.date).getFullYear()}-${String(new Date(i.date).getMonth() + 1).padStart(2, '0')}-${String(new Date(i.date).getDate()).padStart(2, '0')}`*/}<FormattedDate date={i.date}></FormattedDate></p>
                                         <div>
                                             <Badge
                                                 className={`mr-2 bg-lime-200 text-black h-5 font-bold text-[12.5px] inline-flex items-center gap-1`}>
                                                 <ImageIcon className={'w-5 h-5'}/>
-                                                {i.image.length} image{(i.image.length > 1) && 's'}
+                                                {JSON.parse(i.image).length} image{(JSON.parse(i.image).length > 1) && 's'}
                                             </Badge>
                                         </div>
                                     </CardTitle>
@@ -100,9 +105,10 @@ const Gallery = ({posts}) => {
                                                     </Badge>
                                                 </a>
                                             )}
+
                                         </div>
                                         <div onClick={() => {
-                                            router.push(`/gallery/${i.id}`)
+                                            router.push(`/gallery/${i.slug}`)
                                         }}>
                                             <ArrowRight className={'w-5 h-5 cursor-pointer'}/>
                                         </div>
