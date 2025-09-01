@@ -6,7 +6,8 @@ import {ShimmerButton} from "@/components/magicui/shimmer-button";
 import {Label} from "@/components/ui/label";
 import Image from "next/image";
 import {Send, Loader2Icon} from "lucide-react";
-import {toast, Toaster} from "sonner";
+import { Toaster } from "@/components/ui/sonner"
+import {toast} from "sonner";
 import {Turnstile} from '@marsidev/react-turnstile'
 import {Highlighter} from "@/components/magicui/highlighter";
 
@@ -54,7 +55,7 @@ const Message = () => {
                 description={"Share your suggestions / bug reports through this page !"}
             >
                 <br/>
-                <Toaster richColors={true} position={'top-center'}/>
+                <Toaster position={'bottom-right'}/>
                 <div
                     className={`max-w-screen-md flex flex-col mx-auto p-3`}
                 >
