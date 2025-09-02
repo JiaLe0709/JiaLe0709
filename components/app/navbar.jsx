@@ -7,158 +7,168 @@ import AnimatedThemeToggler from "@/components/magicui/animatedThemeToogle";
 
 export default function Navbar({ typeogpage, navTitle }) {
     const [showNav, setShowNav] = useState(false)
-    const [isMobile, setIsMobile] = useState(false)
-    const [showMax90, setShowMax90] = useState(false)
 
-    useEffect(() => {
-        function handleResize() {
-            const mobile = window.innerWidth < 1024
-            const show90 = window.innerWidth < 900
-            setShowMax90(show90)
-            setIsMobile(mobile)
-            if (!mobile) {
-                setShowNav(false)
-            }
-        }
-
-        handleResize()
-        window.addEventListener("resize", handleResize)
-        return () => window.removeEventListener("resize", handleResize)
-    }, [])
-
+    // Only handle click outside, no resize logic needed
     useEffect(() => {
         function handleClickOutside(e) {
-            if (!e.target.closest("nav") && isMobile) {
+            if (!e.target.closest("nav")) {
                 setShowNav(false)
             }
         }
         document.addEventListener("click", handleClickOutside)
         return () => document.removeEventListener("click", handleClickOutside)
-    }, [isMobile])
+    }, [])
+
+    const isActiveLink = (page) => {
+        return typeogpage?.toString() === page ? "dark:text-lime-300 font-bold text-[#59A808]" : ""
+    }
 
     return (
-        <nav
-            style={{
-                position: "fixed",
-                zIndex: 2,
-                isolation: "isolate",
-            }}
-            className={`select-none font-bold fixed top-4 w-[66%] ${showMax90 && 'w-[90%]'} mx-auto left-1/2 -translate-x-1/2
+        <div className="fixed top-4 left-4 right-4 lg:left-[13%] lg:right-[13%] xl:left-[13%] xl:right-[13%] z-50">
+            <nav className="select-none font-bold w-full h-14
                 border-t-3 border-l-3 border-r-6 border-b-6 bg-white border-black text-black
-                dark:bg-[#191919] dark:text-slate-50 rounded-full h-14 p-5 overflow-visible max-w-7xl
-                flex items-center justify-between gap-4 `}
-        >
-            <div className="flex items-center gap-2">
-                <Image src="https://jiale.imglab-cdn.net/favicon.png?format=avif" alt="logo" width={44} height={44} unoptimized={true}/>
-                <span className="text-black dark:text-slate-200 whitespace-nowrap">{navTitle}</span>
-            </div>
+                dark:bg-[#191919] dark:text-slate-50 rounded-full px-6 overflow-visible
+                flex items-center justify-between gap-4"
+                 style={{
+                     isolation: "isolate",
+                 }}
+            >
+                {/* Logo and Title */}
+                <div className="flex items-center gap-2 min-w-0">
+                    <Image
+                        src="https://jiale.imglab-cdn.net/favicon.png?format=avif"
+                        alt="logo"
+                        width={44}
+                        height={44}
+                        unoptimized={true}
+                        className="flex-shrink-0"
+                    />
+                    <span className="text-black dark:text-slate-200 whitespace-nowrap truncate">
+                        {navTitle}
+                    </span>
+                </div>
 
-            {!isMobile ? (
-                <div className="flex items-center justify-left">
+                {/* Desktop Navigation - Hidden on mobile */}
+                <div className="hidden lg:flex items-center justify-left">
                     <ul className="flex items-center gap-6">
                         <li>
-                            <Link href="/" className={typeogpage?.toString() === "home" ? "dark:text-lime-300 font-bold text-[#59A808]" : ""}>Home</Link>
-                        </li>
-                        <li>
-                            <Link href="/blog" className={typeogpage?.toString() === "blog" ? "dark:text-lime-300 font-bold text-[#59A808]" : ""}>Blog</Link>
-                        </li>
-                        <li>
-                            <Link href="/gallery" className={typeogpage?.toString() === "gallery" ? "dark:text-lime-300 font-bold text-[#59A808]" : ""}>Gallery</Link>
-                        </li>
-                        <li>
-                            <Link href="/projects" className={typeogpage?.toString() === "projects" ? "dark:text-lime-300  font-bold text-[#59A808]" : ""}>Projects</Link>
-                        </li>
-                        <li>
-                            <Link href="/contact" className={typeogpage?.toString() === "contact" ? "dark:text-lime-300 font-bold text-[#59A808]" : ""}>Contact</Link>
-                        </li>
-                        <li>
-                            <AnimatedThemeToggler className={'items-center size-5 justify-center flex cursor-pointer'}/>
-                        </li>
-                    </ul>
-                </div>
-            ) : (
-
-                <Button
-                    size="sm"
-                    variant="ghost"
-                    className="rounded-full min-w-[40px] flex items-center gap-1"
-                    onClick={() => setShowNav(prev => !prev)}
-                >
-                    {showNav ? <ChevronUp /> : <ChevronDown />}
-                </Button>
-            )}
-
-            {isMobile && showNav && (
-                <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-[#191919]
-                border-t-2 border-l-2 border-r-6 border-b-6 border-black rounded-3xl p-4
-                max-h-[calc(100vh-6rem)] overflow-y-auto">
-                    <ul className="flex flex-col items-center gap-4">
-                        <li>
-                            <Link
-                                href="/"
-                                className={typeogpage?.toString() === "home" ? "dark:text-lime-300 font-bold text-[#59A808]" : ""}
-                                onClick={() => setShowNav(false)}
-                            >
+                            <Link href="/" className={isActiveLink("home")}>
                                 Home
                             </Link>
                         </li>
                         <li>
-                            <Link
-                                href="/blog"
-                                className={typeogpage?.toString() === "blog" ? "dark:text-lime-300 font-bold text-[#59A808]" : ""}
-                                onClick={() => setShowNav(false)}
-                            >
+                            <Link href="/blog" className={isActiveLink("blog")}>
                                 Blog
                             </Link>
                         </li>
                         <li>
-                            <Link
-                                href="/gallery"
-                                className={typeogpage?.toString() === "gallery" ? "dark:text-lime-300 font-bold text-[#59A808]" : ""}
-                                onClick={() => setShowNav(false)}
-                            >
+                            <Link href="/gallery" className={isActiveLink("gallery")}>
                                 Gallery
                             </Link>
                         </li>
                         <li>
-                            <Link
-                                href="/projects"
-                                className={typeogpage?.toString() === "projects" ? "dark:text-lime-300  font-bold text-[#59A808]" : ""}
-                                onClick={() => setShowNav(false)}
-                            >
+                            <Link href="/projects" className={isActiveLink("projects")}>
                                 Projects
                             </Link>
                         </li>
                         <li>
-                            <Link
-                                href="/contact"
-                                className={typeogpage?.toString() === "contact" ? "dark:text-lime-300 font-bold text-[#59A808]" : ""}
-                                onClick={() => setShowNav(false)}
-                            >
+                            <Link href="/contact" className={isActiveLink("contact")}>
                                 Contact
                             </Link>
                         </li>
                         <li>
-                            <span
-                                className="cursor-pointer"
-                                onClick={() => {
-                                    navigator.share({
-                                        title: "Jia Le's Wonderland",
-                                        text: `This is the start of something good... and it will get better.\n`,
-                                        url: window.location.href,
-                                    })
-                                    setShowNav(false)
-                                }}
-                            >
-                                Share
-                            </span>
-                        </li>
-                        <li>
-                            <AnimatedThemeToggler />
+                            <AnimatedThemeToggler className="items-center size-5 justify-center flex cursor-pointer"/>
                         </li>
                     </ul>
                 </div>
-            )}
-        </nav>
+
+                {/* Mobile Menu Button - Only shown on mobile */}
+                <Button
+                    size="sm"
+                    variant="ghost"
+                    className="lg:hidden rounded-full min-w-[40px] flex items-center gap-1"
+                    onClick={() => setShowNav(prev => !prev)}
+                    aria-label="Toggle navigation menu"
+                >
+                    {showNav ? <ChevronUp /> : <ChevronDown />}
+                </Button>
+
+                {/* Mobile Navigation Menu */}
+                {showNav && (
+                    <div className="lg:hidden absolute top-full left-0 right-0 mt-2 bg-white dark:bg-[#191919]
+                        border-t-2 border-l-2 border-r-6 border-b-6 border-black rounded-3xl p-4
+                        max-h-[calc(100vh-6rem)] overflow-y-auto transition-all duration-300 ease-in-out"
+                    >
+                        <ul className="flex flex-col items-center gap-4">
+                            <li>
+                                <Link
+                                    href="/"
+                                    className={isActiveLink("home")}
+                                    onClick={() => setShowNav(false)}
+                                >
+                                    Home
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/blog"
+                                    className={isActiveLink("blog")}
+                                    onClick={() => setShowNav(false)}
+                                >
+                                    Blog
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/gallery"
+                                    className={isActiveLink("gallery")}
+                                    onClick={() => setShowNav(false)}
+                                >
+                                    Gallery
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/projects"
+                                    className={isActiveLink("projects")}
+                                    onClick={() => setShowNav(false)}
+                                >
+                                    Projects
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/contact"
+                                    className={isActiveLink("contact")}
+                                    onClick={() => setShowNav(false)}
+                                >
+                                    Contact
+                                </Link>
+                            </li>
+                            <li>
+                                <button
+                                    className="cursor-pointer hover:text-[#59A808] dark:hover:text-lime-300 transition-colors"
+                                    onClick={() => {
+                                        if (navigator.share) {
+                                            navigator.share({
+                                                title: "Jia Le's Wonderland",
+                                                text: `This is the start of something good... and it will get better.\n`,
+                                                url: window.location.href,
+                                            })
+                                        }
+                                        setShowNav(false)
+                                    }}
+                                >
+                                    Share
+                                </button>
+                            </li>
+                            <li>
+                                <AnimatedThemeToggler />
+                            </li>
+                        </ul>
+                    </div>
+                )}
+            </nav>
+        </div>
     )
 }
