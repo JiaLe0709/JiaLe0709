@@ -1,72 +1,83 @@
 import Layout from "@/layouts/globals";
-import {getAllPosts} from "@/lib/notion/getAllPosts";
+import { getAllPosts } from "@/lib/notion/getAllPosts";
 import React from "react";
 import Image from "next/image";
-import {InteractiveHoverButton} from "@/components/magicui/interactive-hover-button";
-import {useRouter} from "next/router";
+import {Button} from "@/components/ui/button";
+import {ShimmerButton} from "@/components/magicui/shimmer-button";
 
 export async function getStaticProps() {
     return {
         props: {
-            posts: await getAllPosts({onlyProject: true})
+            posts: await getAllPosts({ onlyProject: true }),
         },
         revalidate: 10,
     };
 }
 
-export default function Projects({posts}) {
-
-    const router = useRouter()
+export default function Projects({ posts }) {
 
     return (
-        <>
-            <Layout
-                title={'Projects'}
-                navTitle={'Projects'}
-                path={'/projects'}
-                typeOfPage={'projects'}
-                description={'A collection of projects I have worked on. No matter its useful or not'}
-            >
-                <br/>
-                <div className="max-w-screen-md flex flex-col mx-auto pr-4 pl-4 items-center">
-                    <div className="w-full max-w-2xl space-y-4">
-                        <br/>
-                        {posts.map((p) => (
-                            <div
-                                className="w-full max-w-sm md:max-w-2xl bg-white rounded-2xl border-black border-2 border-b-6 border-r-6 dark:bg-[#191919] border-t-3 border-l-3 p-6 flex flex-col md:flex-row overflow-hidden glow-hover mx-auto"
-                                key={p.id}
-                            >
+        <Layout
+            title="Projects"
+            navTitle="Projects"
+            path="/projects"
+            typeOfPage="projects"
+            description="A collection of projects I have worked on. No matter if it's useful or not"
+        >
+            <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <h1 className="text-4xl font-extrabold text-center mb-12 hidden tracking-tight">
+                    Projects
+                </h1>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {posts.map((p) => (
+                        <div
+                            key={p.id}
+                            className="bg-white dark:bg-neutral-900 rounded-2xl border border-neutral-200 dark:border-neutral-800 overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col"
+                        >
+                            <div className="relative w-full h-56">
                                 <Image
                                     src={p.page_cover}
-                                    alt={'Page Cover'}
-                                    width={150}
-                                    height={150}
-                                    className={'rounded-xl aspect-video object-cover mb-4 md:mb-0 md:mr-4 w-full md:w-65 max-w-sm md:max-w-none'}
+                                    alt="Page Cover"
+                                    fill
+                                    className="rounded-t-2xl object-cover"
                                 />
-                                <div className="flex-1">
-                                    <h2 className={'text-2xl font-bold'}>{p.icon} {p.title}</h2>
-                                    <br/>
-                                    <p className={'text-gray-600 dark:text-gray-200'}>{p.summary}</p>
-                                    <div className="pt-4">
-                                        <InteractiveHoverButton
-                                            className={'cursor-pointer'}
-                                            onClick={() =>window.open(p.project_url, '_blank')}
-                                        >
-                                            Code
-                                        </InteractiveHoverButton>
-                                        <InteractiveHoverButton
-                                            onClick={() => window.open(p.live_demo, '_blank')}
-                                            className={'ml-4 cursor-pointer'}
-                                        >
-                                            Demo
-                                        </InteractiveHoverButton>
-                                    </div>
+                            </div>
+                            <div className="p-6 flex flex-col flex-grow">
+                                <h2 className="text-2xl font-bold mb-2 flex items-center">
+                                    {p.icon} {p.title}
+                                </h2>
+                                <p className="text-gray-600 dark:text-gray-300 flex-grow text-balance">
+                                    {p.summary}
+                                </p>
+
+                                <div className="flex gap-4 mt-4 ">
+                                    {
+                                        p.project_url && (
+                                            <Button
+                                                className="flex-1 h-9 rounded-2xl font-bold"
+                                                onClick={() => window.open(p.project_url, "_blank")}
+                                            >
+                                                Code
+                                            </Button>
+                                        )
+                                    }
+                                    {
+                                        p.live_demo && (
+                                            <Button
+                                                className="flex-1 h-9 font-bold rounded-2xl"
+                                                onClick={() => window.open(p.live_demo, "_blank")}
+                                            >
+                                                Demo
+                                            </Button>
+                                        )
+                                    }
                                 </div>
                             </div>
-                        ))}
-                    </div>
+                        </div>
+                    ))}
                 </div>
-            </Layout>
-        </>
-    )
+            </div>
+        </Layout>
+    );
 }
