@@ -1,7 +1,12 @@
 import Image from "next/image";
 import Layout from "@/layouts/globals";
+import VisitCounter from "@/components/app/visitCounter";
 
 export default function Home() {
+
+    const { counter } = VisitCounter()
+    console.log(counter)
+
     return (
         <Layout
             navTitle={'Home'}
@@ -15,6 +20,7 @@ export default function Home() {
                 <Image src={'/favicon.png'} alt={'Logo'} width={210} height={210} quality={100}/>
                 <h1>Hi, I am Jia Le</h1>
             </div>
+
         </Layout>
     );
 }
