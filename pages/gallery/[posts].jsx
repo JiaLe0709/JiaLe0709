@@ -138,7 +138,7 @@ const Posts = ({ post }) => {
                                     style={{ zIndex: 9999 }}
                                     src={`${process.env.NEXT_PUBLIC_SOURCES_URL}/o/${img.sources}/${img.item}`}
                                 >
-                                    <div className="p-[1.60px] rounded-2xl shadow-lg">
+                                    <div className="p-[1.60px] rounded-2xl ">
                                         <Image
                                             quality={100}
                                             src={`${process.env.NEXT_PUBLIC_SOURCES_URL}/o/${img.sources}/${img.item}`}
