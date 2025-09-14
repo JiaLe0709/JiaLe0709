@@ -6,7 +6,6 @@ import FormattedDate from "@/components/app/FormattedDate";
 import * as motion from "motion/react-client"
 import {Pencil, Calendar, Clock} from "lucide-react";
 import React from "react";
-import Image from "next/image"
 
 export async function getStaticProps() {
     const posts = await getAllPosts({onlyPost: true})

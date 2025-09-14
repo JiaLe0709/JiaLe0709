@@ -54,7 +54,7 @@ export default function Layout({children, title, og, description, path, typeOfPa
                         <span className="text-sm text-gray-500 sm:text-center dark:text-[#E0E0E0]">
                             © {new Date().getFullYear()}
                             <a href="https://jiale.in/">
-                            {` Jia Le's Wonderland | 😎 ${counter || 0}`}
+                            {` Jia Le's Wonderland | 🏝️ ${counter || 0}`}
                             </a>
                         </span>
                         {/*<ul

@@ -27,7 +27,7 @@ export default function GalleryStack() {
                     <BlurFade key={imageUrl} delay={0.25 + idx * 0.05} inView>
                         <img
                             className="mb-4 size-full rounded-lg object-cover"
-                            src={`https://beans-1.jiale.in/${imageUrl}`}
+                            src={`https://beans-1.imglab-cdn.net/${imageUrl}`}
                             alt={`Random image ${idx + 1}`}
                             onError={(e) => {
                                 e.currentTarget.src = 'https://jiale.imglab-cdn.net/favicon.png?format=avif'
