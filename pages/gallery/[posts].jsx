@@ -136,12 +136,12 @@ const Posts = ({ post }) => {
                             <div key={idx}>
                                 <PhotoView
                                     style={{ zIndex: 9999 }}
-                                    src={`${process.env.NEXT_PUBLIC_SOURCES_URL}/o/${img.sources}/${img.item}`}
+                                    src={`https://${img.sources}.${process.env.NEXT_PUBLIC_SOURCES_URL}/${img.item}`}
                                 >
                                     <div className="p-[1.60px] rounded-2xl ">
                                         <Image
                                             quality={100}
-                                            src={`${process.env.NEXT_PUBLIC_SOURCES_URL}/o/${img.sources}/${img.item}`}
+                                            src={`https://${img.sources}.${process.env.NEXT_PUBLIC_SOURCES_URL}/${img.item}`}
                                             alt={`Image ${idx + 1}`}
                                             className="aspect-video w-full rounded-xl object-cover"
                                             width={250}

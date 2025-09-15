@@ -60,12 +60,12 @@ const Gallery = ({posts}) => {
                                                 {JSON.parse(i.image).map((img, id) => (
                                                     <CarouselItem key={id}>
                                                         <PhotoView
-                                                            src={`${process.env.NEXT_PUBLIC_SOURCES_URL}/o/${img.sources}/${img.item}`}
+                                                            src={`https://${img.sources}.${process.env.NEXT_PUBLIC_SOURCES_URL}/${img.item}`}
                                                         >
                                                                 <Image
                                                                     loading={'lazy'}
                                                                     quality={100}
-                                                                    src={`${process.env.NEXT_PUBLIC_SOURCES_URL}/o/${img.sources}/${img.item}`}
+                                                                    src={`https://${img.sources}.${process.env.NEXT_PUBLIC_SOURCES_URL}/${img.item}`}
                                                                     alt={`Image ${id + 1}`}
                                                                     className="aspect-video w-full rounded-tl-xl rounded-tr-xl object-cover"
                                                                     width={250}

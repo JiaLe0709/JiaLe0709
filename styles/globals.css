@@ -240,3 +240,14 @@ html {
   background-color: #b5ff6d;
   color: #000000;
 }
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
