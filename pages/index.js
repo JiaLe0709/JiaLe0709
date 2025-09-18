@@ -6,7 +6,25 @@ import GalleryStack from "@/components/app/GalleryStack";
 import Connection from "@/components/app/Connection";
 import React from "react";
 
-export default function Home() {
+export async function getStaticProps() {
+    let imageData = []
+
+    try {
+        const res = await fetch("https://beans-1.jiale.in/list")
+        imageData = await res.json()
+    } catch (e) {
+        imageData = ["IMG20250627143008.jpg", "IMG_20250627_141142.jpg", "IMG20250627135603.jpg", "IMG_20240212_111953.jpg", "IMG20250627134207.jpg", "IMG_20240212_115214.jpg"]
+    }
+
+    return {
+        props: {
+            imageList: imageData,
+        },
+    }
+}
+
+
+export default function Home({ imageList }) {
 
     return (
         <Layout
@@ -58,7 +76,7 @@ export default function Home() {
                             🖼️ Gallery
                         </Link>
                     </h2>
-                    <GalleryStack/>
+                    <GalleryStack imageList={imageList}/>
                 </div>
             </section>
 

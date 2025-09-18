@@ -1,24 +1,25 @@
 import { useEffect, useState } from "react"
 import { BlurFade } from "@/components/magicui/blur-fade"
 
-async function getRandomImages() {
-    const res = await fetch("https://beans-1.jiale.in/list")
-    const images = await res.json()
+async function getRandomImages(images) {
+    const shuffled = [...images]
 
-    for (let i = images.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [images[i], images[j]] = [images[j], images[i]]
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1))
+        ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
     }
 
-    return images.slice(0, 6)
+    return shuffled.slice(0, 6)
 }
 
-export default function GalleryStack() {
+export default function GalleryStack({ imageList }) {
     const [images, setImages] = useState([])
     const [loaded, setLoaded] = useState({})
 
     useEffect(() => {
-        getRandomImages().then((imgs) => {
+        if (!imageList || imageList.length === 0) return
+
+        getRandomImages(imageList).then((imgs) => {
             // preload images
             imgs.forEach((url) => {
                 const fullUrl = `https://beans-1.imglab-cdn.net/${url}`
@@ -31,7 +32,7 @@ export default function GalleryStack() {
             })
             setImages(imgs)
         })
-    }, [])
+    }, [imageList])
 
     return (
         <section id="photos">
@@ -43,7 +44,6 @@ export default function GalleryStack() {
                     return (
                         <BlurFade key={imageUrl} delay={0.25 + idx * 0.05} inView>
                             <div className="relative mb-4 w-full overflow-hidden rounded-lg bg-gray-200">
-
                                 {!isLoaded && (
                                     <div className="absolute inset-0 animate-shimmer bg-gradient-to-r from-transparent via-white/40 to-transparent" />
                                 )}
@@ -52,7 +52,9 @@ export default function GalleryStack() {
                                     src={fullUrl}
                                     alt={`Random image ${idx + 1}`}
                                     className={`size-full object-cover transition duration-700 ease-in-out ${
-                                        isLoaded ? "blur-0 opacity-100" : "blur-lg opacity-70"
+                                        isLoaded
+                                            ? "blur-0 opacity-100"
+                                            : "blur-lg opacity-70"
                                     }`}
                                     onError={(e) => {
                                         e.currentTarget.src =
