@@ -41,7 +41,7 @@ export async function getStaticProps() {
         props: {
             imageList: imageData,
         },
-        revalidate: 10,
+        //revalidate: 10,
     }
 }
 
