@@ -11,7 +11,10 @@ export async function getStaticProps() {
 
     try {
         const res = await fetch("https://beans-1.jiale.in/list")
-        imageData = await res.json()
+        const text = await res.text()
+
+        imageData = JSON.parse(text)
+
     } catch (e) {
         console.log(e)
         imageData = ["IMG20250627143008.jpg", "IMG_20250627_141142.jpg", "IMG20250627135603.jpg", "IMG_20240212_111953.jpg", "IMG20250627134207.jpg", "IMG_20240212_115214.jpg"]
