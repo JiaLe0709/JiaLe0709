@@ -13,6 +13,7 @@ export async function getStaticProps() {
         const res = await fetch("https://beans-1.jiale.in/list")
         imageData = await res.json()
     } catch (e) {
+        console.log(e)
         imageData = ["IMG20250627143008.jpg", "IMG_20250627_141142.jpg", "IMG20250627135603.jpg", "IMG_20240212_111953.jpg", "IMG20250627134207.jpg", "IMG_20240212_115214.jpg"]
     }
 
@@ -20,6 +21,7 @@ export async function getStaticProps() {
         props: {
             imageList: imageData,
         },
+        revalidate: 10,
     }
 }
 
