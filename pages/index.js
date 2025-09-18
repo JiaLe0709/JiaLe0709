@@ -12,7 +12,8 @@ export async function getStaticProps() {
     try {
         const res = await fetch("https://beans-1.jiale.in/list", {
             headers: {
-                "User-Agent": "Next.js Fetch",
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+                "Accept": "application/json,text/plain,*/*",
             },
         })
 
