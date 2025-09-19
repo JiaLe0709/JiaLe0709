@@ -12,12 +12,14 @@ async function getRandomImages(images) {
     return shuffled.slice(0, 6)
 }
 
-export default function GalleryStack({ imageList }) {
+export default function GalleryStack({ imageList, TriggeredToReload }) {
     const [images, setImages] = useState([])
     const [loaded, setLoaded] = useState({})
 
     useEffect(() => {
         if (!imageList || imageList.length === 0) return
+
+        //console.log("TriggeredToReload", TriggeredToReload)
 
         getRandomImages(imageList).then((imgs) => {
             // preload images
@@ -32,7 +34,7 @@ export default function GalleryStack({ imageList }) {
             })
             setImages(imgs)
         })
-    }, [imageList])
+    }, [imageList, TriggeredToReload])
 
     return (
         <section id="photos">

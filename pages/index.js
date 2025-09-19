@@ -4,6 +4,7 @@ import Link from "next/link"
 import GreetingTitle from "@/components/app/greetingTitle";
 import GalleryStack from "@/components/app/GalleryStack";
 import Connection from "@/components/app/Connection";
+import { RefreshCcw } from 'lucide-react';
 import React from "react";
 
 export async function getStaticProps() {
@@ -46,6 +47,8 @@ export async function getStaticProps() {
 }
 
 export default function Home({ imageList }) {
+
+    const [trigger, setTrigger] = React.useState(1)
 
     return (
         <Layout
@@ -92,12 +95,13 @@ export default function Home({ imageList }) {
             <section className="mx-auto max-w-5xl px-3">
                 <div
                     className="rounded-2xl border border-t-3 border-l-3 border-r-5 border-b-5 bg-[#FFFFFF] dark:bg-[#191919] dark:text-slate-50 border-black shadow-md p-4">
-                    <h2 className="mb-4 text-xl font-semibold dark:text-white">
+                    <h2 className="mb-4 text-xl font-semibold dark:text-white flex">
                         <Link href={'gallery'} className={'cursor-pointer hover'}>
                             🖼️ Gallery
                         </Link>
+                        <RefreshCcw onClick={() => {setTrigger((i) => i + 1)}} className={'ml-auto cursor-pointer hover h-5 w-5'}/>
                     </h2>
-                    <GalleryStack imageList={imageList}/>
+                    <GalleryStack imageList={imageList} TriggeredToReload={trigger}/>
                 </div>
             </section>
 
