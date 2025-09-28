@@ -1,11 +1,12 @@
 import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { ChevronDown, ChevronUp } from "lucide-react"
-import { useState, useEffect } from "react"
+import {Button} from "@/components/ui/button"
+import {ChevronDown, ChevronUp} from "lucide-react"
+import {useState, useEffect} from "react"
 import Link from "next/link"
+import {motion} from "framer-motion"
 import AnimatedThemeToggler from "@/components/magicui/animatedThemeToogle";
 
-export default function Navbar({ typeogpage, navTitle }) {
+export default function Navbar({typeofpage, navTitle}) {
     const [showNav, setShowNav] = useState(false)
 
     // Only handle click outside, no resize logic needed
@@ -15,12 +16,13 @@ export default function Navbar({ typeogpage, navTitle }) {
                 setShowNav(false)
             }
         }
+
         document.addEventListener("click", handleClickOutside)
         return () => document.removeEventListener("click", handleClickOutside)
     }, [])
 
     const isActiveLink = (page) => {
-        return typeogpage?.toString() === page ? "dark:text-lime-300 font-bold text-[#59A808]" : ""
+        return typeofpage?.toString() === page ? "dark:text-lime-300 font-bold text-[#59A808]" : ""
     }
 
     return (
@@ -35,14 +37,25 @@ export default function Navbar({ typeogpage, navTitle }) {
             >
                 {/* Logo and Title */}
                 <div className="flex items-center gap-2 min-w-0">
-                    <Image
-                        src="https://jiale.imglab-cdn.net/favicon.png?format=avif"
-                        alt="logo"
-                        width={44}
-                        height={44}
-                        unoptimized={true}
-                        className="flex-shrink-0"
-                    />
+                    <motion.div
+                        whileTap={{scale: 0.8}} // minimize on press
+                        animate={{scale: 1}} // default back to normal
+                        transition={{
+                            type: "spring",
+                            stiffness: 500,
+                            damping: 20,
+                        }}
+                        className="cursor-pointer"
+                    >
+                        <Image
+                            src="https://jiale.imglab-cdn.net/favicon.png?format=avif"
+                            alt="logo"
+                            width={44}
+                            height={44}
+                            unoptimized={true}
+                            className="flex-shrink-0"
+                        />
+                    </motion.div>
                     <span className="text-black dark:text-slate-200 whitespace-nowrap truncate">
                         {navTitle}
                     </span>
@@ -90,7 +103,7 @@ export default function Navbar({ typeogpage, navTitle }) {
                     onClick={() => setShowNav(prev => !prev)}
                     aria-label="Toggle navigation menu"
                 >
-                    {showNav ? <ChevronUp /> : <ChevronDown />}
+                    {showNav ? <ChevronUp/> : <ChevronDown/>}
                 </Button>
 
                 {/* Mobile Navigation Menu */}
@@ -163,7 +176,7 @@ export default function Navbar({ typeogpage, navTitle }) {
                                 </button>
                             </li>
                             <li>
-                                <AnimatedThemeToggler />
+                                <AnimatedThemeToggler/>
                             </li>
                         </ul>
                     </div>

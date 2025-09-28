@@ -4,8 +4,9 @@ import Link from "next/link"
 import GreetingTitle from "@/components/app/greetingTitle";
 import GalleryStack from "@/components/app/GalleryStack";
 import Connection from "@/components/app/Connection";
-import { RefreshCcw } from 'lucide-react';
+import {RefreshCcw} from 'lucide-react';
 import React from "react";
+import {motion} from "framer-motion"
 
 export async function getStaticProps() {
     let imageData = []
@@ -46,7 +47,7 @@ export async function getStaticProps() {
     }
 }
 
-export default function Home({ imageList }) {
+export default function Home({imageList}) {
 
     const [trigger, setTrigger] = React.useState(1)
 
@@ -58,7 +59,25 @@ export default function Home({ imageList }) {
             typeOfPage="home"
         >
             <div className="flex flex-col items-center justify-center p-4 text-center">
-                <Image src="/favicon.png" alt="Logo" width={170} height={170} quality={100}/>
+                <motion.div
+                    whileTap={{ scale: 0.8 }} // minimize on press
+                    animate={{ scale: 1 }} // default back to normal
+                    transition={{
+                        type: "spring",
+                        stiffness: 500,
+                        damping: 20,
+                    }}
+                    className="cursor-pointer"
+                >
+                    <Image
+                        src="https://jiale.imglab-cdn.net/favicon.png?format=avif"
+                        alt="Logo"
+                        unoptimized={true}
+                        width={170}
+                        height={170}
+                        quality={100}
+                    />
+                </motion.div>
                 <h1 className=" text-2xl font-semibold flex"><GreetingTitle/></h1>
             </div>
 
@@ -68,7 +87,8 @@ export default function Home({ imageList }) {
                     <h2 className="mb-4 text-xl font-semibold dark:text-white">📜 About me</h2>
                     {
                         <Image
-                            src="/kitchenBanner.png"
+                            unoptimized={true}
+                            src="https://jiale.imglab-cdn.net/kitchenBanner.png?format=avif"
                             alt="Kitchen Banner"
                             width={843}
                             height={180}
@@ -99,7 +119,9 @@ export default function Home({ imageList }) {
                         <Link href={'gallery'} className={'cursor-pointer hover'}>
                             🖼️ Gallery
                         </Link>
-                        <RefreshCcw onClick={() => {setTrigger((i) => i + 1)}} className={'ml-auto cursor-pointer hover h-5 w-5'}/>
+                        <RefreshCcw onClick={() => {
+                            setTrigger((i) => i + 1)
+                        }} className={'ml-auto cursor-pointer hover h-5 w-5'}/>
                     </h2>
                     <GalleryStack imageList={imageList} TriggeredToReload={trigger}/>
                 </div>
