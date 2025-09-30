@@ -24,14 +24,14 @@ const Connection = () => {
             name: "Github",
             icon: GithubIcon,
             links: "https://github.com/jiale0709",
-            color: 'hover:bg-black hover:text-white dark:hover:bg-black dark:hover:text-white '
+            color: 'hover:bg-black hover:text-white dark:hover:bg-black dark:hover:text-white'
         },
         {
             id: 4,
             name: "Status",
             icon: AlarmCheckIcon,
             links: 'https://status.jiale.in',
-            color: 'hover:bg-[#C76C3F] hover:text-white dark:hover:bg-[#C76C3F] dark:hover:text-white dark:hover:border-[#4F200F] hover:border-[#4F200F]'
+            color: 'hover:bg-[#C76C3F] hover:text-white dark:hover:bg-[#C76C3F] dark:hover:text-white dark:hover:border-[#4F200F] hover:border-[#4F200F] '
         }
     ];
 
@@ -47,7 +47,7 @@ const Connection = () => {
                         href={link.links}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`flex items-center ${link.color} gap-2 rounded-xl p-3 cursor-pointer border border-t-3 border-l-3 border-r-5 border-b-5 bg-[#FFFFFF] dark:bg-[#191919] dark:text-slate-50 border-black shadow-md`}
+                        className={`flex items-center ${link.color} gap-2 rounded-xl p-3 cursor-pointer border border-t-[2.1] border-l-[2.1] border-r-[4.5] border-b-[4.5] bg-[#F7F7F7] dark:bg-[#232326] dark:text-slate-50 border-black shadow-md`}
                     >
                         <Icon className={'w-5 h-5 '}/> {link.name}
                     </motion.a>

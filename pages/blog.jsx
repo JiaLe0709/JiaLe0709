@@ -28,7 +28,7 @@ function TruncatedText({text, limit = 10}) {
     const words = text.split(" ");
     const isLong = words.length > limit;
     const displayed = isLong ? words.slice(0, limit).join(" ") + "..." : text;
-    return <p className={'text-[16px]'}>{displayed}</p>;
+    return <p className={'md:text-[16px] text-[14.5px]'}>{displayed}</p>;
 }
 
 export default function Blog({posts}) {
@@ -54,7 +54,7 @@ export default function Blog({posts}) {
                             }}
                             onClick={() => router.push(`/blog/${post.slug}`)}
                             key={index}
-                            className="relative w-full  bg-white rounded-2xl border-black border-2 border-b-7 border-r-7 dark:bg-[#191919] border-t-3 border-l-3 p-4 flex flex-col md:flex-row cursor-pointer overflow-hidden group glow-hover"
+                            className="relative w-full  bg-white rounded-2xl border-black border-2 border-b-5 border-r-5 dark:bg-[#191919] border-t-3 border-l-3 p-4 flex flex-col md:flex-row cursor-pointer overflow-hidden group glow-hover"
                         >
                             <div className="relative z-10 inline-block space-y-2">
                                 <h1 className="text-2xl font-bold">

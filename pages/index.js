@@ -67,7 +67,7 @@ export default function Home({imageList}) {
                         stiffness: 500,
                         damping: 20,
                     }}
-                    className="cursor-pointer"
+                    className="cursor-pointer select-none"
                 >
                     <Image
                         src="https://jiale.imglab-cdn.net/favicon.png?format=avif"
@@ -83,12 +83,12 @@ export default function Home({imageList}) {
 
             <section className="mx-auto max-w-5xl px-3">
                 <div
-                    className="rounded-2xl border border-t-3 border-l-3 border-r-5 border-b-5 bg-[#FFFFFF] dark:bg-[#191919] dark:text-slate-50 border-black shadow-md p-4">
+                    className="rounded-2xl border border-t-3 border-l-3 border-r-[4.7] border-b-[4.7] bg-[#FFFFFF] dark:bg-[#191919] dark:text-slate-50 border-black shadow-md p-4">
                     <h2 className="mb-4 text-xl font-semibold dark:text-white">📜 About me</h2>
                     {
                         <Image
                             unoptimized={true}
-                            src="https://jiale.imglab-cdn.net/kitchenBanner.png?format=avif"
+                            src="https://jiale.imglab-cdn.net/kitchenBanner.png?format=png&quality=80&width=1400&height=300"
                             alt="Kitchen Banner"
                             width={843}
                             height={180}
@@ -114,7 +114,7 @@ export default function Home({imageList}) {
             <br/>
             <section className="mx-auto max-w-5xl px-3">
                 <div
-                    className="rounded-2xl border border-t-3 border-l-3 border-r-5 border-b-5 bg-[#FFFFFF] dark:bg-[#191919] dark:text-slate-50 border-black shadow-md p-4">
+                    className="rounded-2xl border border-t-3 border-l-3 border-r-[4.7] border-b-[4.7] bg-[#FFFFFF] dark:bg-[#191919] dark:text-slate-50 border-black shadow-md p-4">
                     <h2 className="mb-4 text-xl font-semibold dark:text-white flex">
                         <Link href={'gallery'} className={'cursor-pointer hover'}>
                             🖼️ Gallery
@@ -130,7 +130,7 @@ export default function Home({imageList}) {
             <br/>
             <section className="mx-auto max-w-5xl px-3">
                 <div
-                    className="rounded-2xl border border-t-3 border-l-3 border-r-5 border-b-5 bg-[#FFFFFF] dark:bg-[#191919] dark:text-slate-50 border-black shadow-md p-4">
+                    className="rounded-2xl border border-t-3 border-l-3 border-r-[4.7] border-b-[4.7] bg-[#FFFFFF] dark:bg-[#191919] dark:text-slate-50 border-black shadow-md p-4">
                     <h2 className="mb-4 text-xl font-semibold dark:text-white">
                         🌸 Connection
                     </h2>

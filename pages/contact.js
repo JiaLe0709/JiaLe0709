@@ -73,7 +73,7 @@ const Message = () => {
                     autoComplete="off"
                     onSubmit={sentMessage}
                 >
-                    <div className='max-w-screen-md grid sm:grid-cols-2 gap-3 mx-auto p-2'>
+                    <div className='max-w-screen-md grid sm:grid-cols-2 gap-3 mx-auto p-4'>
                         <div className={'space-y-2 '}>
                             <Label htmlFor='name' className={'text-[17px] '}>Name</Label>
                             <Input required id='name' name='name' type="text" placeholder="Name"/>

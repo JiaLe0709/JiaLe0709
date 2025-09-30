@@ -28,7 +28,7 @@ export default function Navbar({typeofpage, navTitle}) {
     return (
         <div className="fixed top-4 left-4 right-4 lg:left-[13%] lg:right-[13%] xl:left-[13%] xl:right-[13%] z-50">
             <nav className="select-none font-bold w-full h-14
-                border-t-3 border-l-3 border-r-6 border-b-6 bg-white border-black text-black
+                border-t-3 border-l-3 border-r-[4.5] border-b-[4.5] bg-white border-black text-black
                 dark:bg-[#191919] dark:text-slate-50 rounded-full px-6 overflow-visible
                 flex items-center justify-between gap-4"
                  style={{
@@ -109,7 +109,7 @@ export default function Navbar({typeofpage, navTitle}) {
                 {/* Mobile Navigation Menu */}
                 {showNav && (
                     <div className="lg:hidden absolute top-full left-0 right-0 mt-2 bg-white dark:bg-[#191919]
-                        border-t-2 border-l-2 border-r-6 border-b-6 border-black rounded-3xl p-4
+                        border-t-3 border-l-3 border-r-5 border-b-5 border-black rounded-3xl p-4
                         max-h-[calc(100vh-6rem)] overflow-y-auto transition-all duration-300 ease-in-out"
                     >
                         <ul className="flex flex-col items-center gap-4">
