@@ -2,7 +2,6 @@ import Head from "next/head";
 import {FloatButton} from "antd";
 import localFont from "next/font/local";
 import Navbar from "@/components/app/navbar";
-import Link from "next/link";
 import VisitCounter from "@/components/app/visitCounter";
 
 const torus = localFont({
@@ -63,7 +62,7 @@ export default function Layout({children, title, og, description, path, typeOfPa
                                 <a href="#" className="me-4 md:me-6">About</a>
                             </li>
                             <li>
-                                <a href="https://status.jiale.in" target={"_blank"} className=" me-4 md:me-6">Status</a>
+                                <a href="https://status.jiale.in" target={"_blank"} className=" me-4 md:me-6">Wall</a>
                             </li>
                             <li>
                                 <Link href="/contact">Contact</Link>

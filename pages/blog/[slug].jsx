@@ -3,6 +3,7 @@ import {getAllPosts} from "@/lib/notion/getAllPosts";
 import {getPostBlocks} from "@/lib/notion/getPostBlocks";
 import {NotionRenderer} from "react-notion-x";
 import dynamic from "next/dynamic";
+import localFont from "next/font/local";
 
 const Code = dynamic(() =>
     import("react-notion-x/build/third-party/code").then(m => m.Code)
@@ -80,6 +81,11 @@ export async function getStaticProps({ params: { slug } }) {
     }
 }
 
+const torus = localFont({
+    src: "../../fonts/torus.otf",
+    variable: "--font-torus"
+});
+
 export default function BlogPost({post, blockMap}) {
     return (
         <>
@@ -90,7 +96,8 @@ export default function BlogPost({post, blockMap}) {
                 title={`${post?.title} ⋅ Jia Le's Blog`}
                 description={post?.summary}>
                 <div
-                    className={`max-w-screen-lg flex flex-col mx-auto pr-4 pl-4 items-center`}
+                    className={`max-w-screen-lg flex flex-col mx-auto pr-4 pl-4 items-center `}
+                    style={{ "--notion-font": "var(--font-torus)" }}
                 >
                     <div className="w-full max-w-3xl">
                         <NotionRenderer

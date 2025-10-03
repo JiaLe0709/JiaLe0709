@@ -158,7 +158,7 @@ export default function Navbar({typeofpage, navTitle}) {
                                     Contact
                                 </Link>
                             </li>
-                            <li>
+                            {/*<li>
                                 <button
                                     className="cursor-pointer hover:text-[#59A808] dark:hover:text-lime-300 transition-colors"
                                     onClick={() => {
@@ -174,7 +174,7 @@ export default function Navbar({typeofpage, navTitle}) {
                                 >
                                     Share
                                 </button>
-                            </li>
+                            </li>*/}
                             <li>
                                 <AnimatedThemeToggler/>
                             </li>
