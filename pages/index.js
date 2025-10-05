@@ -92,7 +92,7 @@ export default function Home({imageList}) {
                             alt="Kitchen Banner"
                             width={843}
                             height={180}
-                            className="w-full h-[120px] object-cover object-center rounded-xl mb-4"
+                            className="w-full h-[120px] object-cover select-none object-center rounded-xl mb-4"
                         />}
                     <p className="text-[16px] leading-relaxed text-gray-700 dark:text-[#9A9A9A]">
                         I’m a passionate individual who enjoys learning new skills and exploring
@@ -105,7 +105,7 @@ export default function Home({imageList}) {
                         alt="sign"
                         height={150}
                         width={150}
-                        className="invert dark:invert-0 ml-auto mt-4"
+                        className="invert dark:invert-0 ml-auto mt-4 select-none"
                     />
 
                 </div>

@@ -38,7 +38,7 @@ export default function GalleryStack({ imageList, TriggeredToReload }) {
 
     return (
         <section id="photos">
-            <div className="columns-2 gap-4 sm:columns-3">
+            <div className="columns-2 gap-4 sm:columns-3 select-none">
                 {images.map((imageUrl, idx) => {
                     const fullUrl = `https://beans-1.imglab-cdn.net/${imageUrl}`
                     const isLoaded = loaded[imageUrl]
