@@ -4,6 +4,10 @@ import {getPostBlocks} from "@/lib/notion/getPostBlocks";
 import {NotionRenderer} from "react-notion-x";
 import dynamic from "next/dynamic";
 import localFont from "next/font/local";
+import { Spinner } from "@/components/ui/spinner"
+import { Item, ItemContent, ItemMedia, ItemTitle} from "@/components/ui/item"
+import React from "react";
+import Image from "next/image";
 
 const Code = dynamic(() =>
     import("react-notion-x/build/third-party/code").then(m => m.Code)
@@ -87,6 +91,32 @@ const torus = localFont({
 });
 
 export default function BlogPost({post, blockMap}) {
+
+    if (!post) {
+        return (
+            <Layout
+                navTitle="Loading"
+                typeOfPage="blog"
+                path={'blog'}
+                title="Loading ⋅ Jia Le's Blog"
+                description="A wonderful things in the world. - Jia Le's Blog">
+                <div className="flex h-screen flex-col items-center  text-center p-3 pt-10 space-y-3">
+                    <div className="flex w-full max-w-xs flex-col gap-4 [--radius:1rem]">
+                        <Item variant="muted" className={'bg-amber-200 dark:bg-muted'}>
+                            <ItemMedia>
+                                <Spinner />
+                            </ItemMedia>
+                            <ItemContent>
+                                <ItemTitle className="line-clamp-1">Loading...</ItemTitle>
+                            </ItemContent>
+                        </Item>
+                    </div>
+                    <Image src={'https://jiale.imglab-cdn.net/sleep.png?format=avif'} alt={'404'} width={270} unoptimized={true} height={250} className={'rounded-md mt-2'}/>
+                </div>
+            </Layout>
+        )
+    }
+
     return (
         <>
             <Layout

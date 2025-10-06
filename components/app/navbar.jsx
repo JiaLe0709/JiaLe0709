@@ -22,7 +22,9 @@ export default function Navbar({typeofpage, navTitle}) {
     }, [])
 
     const isActiveLink = (page) => {
-        return typeofpage?.toString() === page ? "dark:text-lime-300 font-bold text-[#59A808]" : ""
+        return typeofpage?.toString() === page
+            ? "dark:text-lime-300 font-bold text-[#59A808]"
+            : ""
     }
 
     return (
@@ -77,6 +79,11 @@ export default function Navbar({typeofpage, navTitle}) {
                         <li>
                             <Link href="/gallery" className={isActiveLink("gallery")}>
                                 Gallery
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/wall" className={isActiveLink("wall")}>
+                                Wall
                             </Link>
                         </li>
                         <li>
@@ -138,6 +145,15 @@ export default function Navbar({typeofpage, navTitle}) {
                                     onClick={() => setShowNav(false)}
                                 >
                                     Gallery
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/wall"
+                                    className={isActiveLink("wall")}
+                                    onClick={() => setShowNav(false)}
+                                >
+                                    Wall
                                 </Link>
                             </li>
                             <li>

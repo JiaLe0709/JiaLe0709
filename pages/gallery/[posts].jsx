@@ -10,6 +10,8 @@ import 'react-photo-view/dist/react-photo-view.css';
 import dynamic from "next/dynamic";
 import { getAllPosts } from "@/lib/notion/getAllPosts";
 import FormattedDate from "@/components/app/FormattedDate";
+import { Spinner } from "@/components/ui/spinner"
+import { Item, ItemContent, ItemMedia, ItemTitle} from "@/components/ui/item"
 
 export async function getStaticPaths() {
 
@@ -62,7 +64,27 @@ const Comment = dynamic(
 const Posts = ({ post }) => {
     const router = useRouter();
 
-    if (!post) return null;
+    if (!post) return (
+        <Layout
+        navTitle="Loading"
+        typeOfPage="gallery"
+        path={router.asPath}
+        title="Loading ⋅ Jia Le's Gallery"
+        description="A collection of images captured through Jia Le's eyes. - Jia Le's Gallery">
+            <div className="flex h-screen flex-col items-center  text-center p-3 pt-10 space-y-3">
+                <div className="flex w-full max-w-xs flex-col gap-4 [--radius:1rem]">
+                    <Item variant="muted" className={'bg-amber-200 dark:bg-muted'}>
+                        <ItemMedia>
+                            <Spinner />
+                        </ItemMedia>
+                        <ItemContent>
+                            <ItemTitle className="line-clamp-1">Loading...</ItemTitle>
+                        </ItemContent>
+                    </Item>
+                </div>
+            </div>
+        </Layout>
+    );
 
     return (
         <Layout
