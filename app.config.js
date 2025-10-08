@@ -1,7 +1,8 @@
 const Config = {
     notionDomain: process.env.NOTION_DOMAIN || "jiale0709.notion.site",
-    notionPageId: process.env.NOTION_PAGE_ID || "62581ac7b5334d6197dc33d9416a9cc3",
-    notionSpacesId: process.env.NOTION_SPACES_ID || "3e2958af48ab41a3821642983fdeae70",
+    notionPageId: process.env.NOTION_PAGE_ID || "252bca3fa613811291be000c11e691c9",
+    notionSpacesId: process.env.NOTION_SPACES_ID || "252bca3fa6138094b2e2fecf189bddaa",
+    notionAPIBaseUrl: process.env.NOTION_API_BASE_URL,
     notionAccessToken: process.env.NOTION_ACCESS_TOKEN,
     giscusConfig: {
         repo: 'jiale0709/giscus-jiale',
