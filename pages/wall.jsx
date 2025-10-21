@@ -57,7 +57,7 @@ const Wall = ({ posts }) => {
                                     <div className="flex items-center">
                                         <span className="font-semibold text-sm text-foreground">Jia Le</span>
                                     </div>
-                                    <span className="text-[14px] text-muted-foreground"><FormattedDate date={i.date}/></span>
+                                    <span className="text-[14px] text-muted-foreground"><FormattedDate date={i.date}/>{i.location && (<a href={`https://www.google.com/maps?q=${i.location}`} target={'_blank0'}> ⋅ {i.location}</a>)}</span>
                                 </div>
                             </div>
                             <h2 className={'text-xl font-bold'}>{i.title}</h2>

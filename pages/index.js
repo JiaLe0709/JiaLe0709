@@ -88,7 +88,7 @@ export default function Home({imageList}) {
                     {
                         <Image
                             unoptimized={true}
-                            src="https://jiale.imglab-cdn.net/kitchenBanner.png?format=png&quality=80&width=1400&height=300"
+                            src="https://jiale.imglab-cdn.net/matchaBanner.png"
                             alt="Kitchen Banner"
                             width={843}
                             height={180}
@@ -97,8 +97,7 @@ export default function Home({imageList}) {
                     <p className="text-[16px] leading-relaxed text-gray-700 dark:text-[#9A9A9A]">
                         I’m a passionate individual who enjoys learning new skills and exploring
                         new interests. I have a strong curiosity about technology and photography,
-                        and right now I’m focusing on improving my photography, writing better
-                        content, and creating functional tools.
+                        and right now I’m focusing on improving my photography and creating functional tools.
                     </p>
                     <Image
                         src="/jiale.png"
