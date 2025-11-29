@@ -7,15 +7,17 @@ import Connection from "@/components/app/Connection";
 import {RefreshCcw} from 'lucide-react';
 import React from "react";
 import {motion} from "framer-motion"
+import ImageData from "@/components/app/imageData";
 
 export async function getStaticProps() {
     let imageData = []
 
     try {
+        /*
         const res = await fetch("https://beans-1.jiale.in/list", {
             headers: {
                 "User-Agent": "vercel-fetch",
-                "Accept": "application/json,text/plain,*/*",
+                "Accept": "application/json,text/plain",
             },
         })
 
@@ -24,8 +26,9 @@ export async function getStaticProps() {
         }
 
         const text = await res.text()
+    */
+        imageData = ImageData
 
-        imageData = JSON.parse(text)
 
     } catch (e) {
         console.error("Image list fetch failed:", e)
