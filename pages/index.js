@@ -88,7 +88,7 @@ export default function Home({imageList}) {
                 <div
                     className="rounded-2xl border border-t-3 border-l-3 border-r-[4.7] border-b-[4.7] bg-[#FFFFFF] dark:bg-[#191919] dark:text-slate-50 border-black shadow-md p-4">
                     <h2 className="mb-4 text-xl font-semibold dark:text-white">📜 About me</h2>
-                    {
+                    {/*
                         <Image
                             unoptimized={true}
                             src="https://jiale.imglab-cdn.net/matchaBanner.png"
@@ -96,7 +96,7 @@ export default function Home({imageList}) {
                             width={843}
                             height={180}
                             className="w-full h-[120px] object-cover select-none object-center rounded-xl mb-4"
-                        />}
+                        />*/}
                     <p className="text-[16px] leading-relaxed text-gray-700 dark:text-[#9A9A9A]">
                         I’m a passionate individual who enjoys learning new skills and exploring
                         new interests. I have a strong curiosity about technology and photography,
