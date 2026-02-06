@@ -73,7 +73,7 @@ export default function Home({imageList}) {
                     className="cursor-pointer select-none"
                 >
                     <Image
-                        src="https://jiale.imglab-cdn.net/favicon.png?format=avif"
+                        src="/favicon.png"
                         alt="Logo"
                         unoptimized={true}
                         width={170}

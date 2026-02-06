@@ -1,12 +1,15 @@
 import Head from "next/head";
 import {FloatButton} from "antd";
-import localFont from "next/font/local";
+// import localFont from "next/font/local";
+import {Quicksand} from 'next/font/google'
 import Navbar from "@/components/app/navbar";
 import VisitCounter from "@/components/app/visitCounter";
 
-const torus = localFont({
-    src: "../fonts/torus.otf",
-});
+// const torus = localFont({
+//     src: "../fonts/torus.otf",
+// });
+
+const QuicksandFont = Quicksand({subsets: ["latin"], weights: ["600", "700"]});
 
 export default function Layout({children, title, og, description, path, typeOfPage, navTitle}) {
 
@@ -40,9 +43,9 @@ export default function Layout({children, title, og, description, path, typeOfPa
                 <div
                     className="absolute right-0 top-0 h-[500px] w-[500px] -translate-x-[30%] translate-y-[20%] rounded-full  bg-lime-200 opacity-50 blur-[80px]"/>
             </div>
-            <div className={`min-h-screen flex flex-col ${torus.className}`}>
+            <div className={`min-h-screen flex flex-col ${QuicksandFont.className}`}>
                 <Navbar navTitle={navTitle || title} typeofpage={typeOfPage}/>
-                <main className={`flex-grow ${torus.className}`}>
+                <main className={`flex-grow ${QuicksandFont.className}`}>
                     <br/>
                     <br/>
                     {children}

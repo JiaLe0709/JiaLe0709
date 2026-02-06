@@ -10,7 +10,7 @@ const GreetingTitle = () => {
         "Sup",
         "Wassup",
         "G’day",
-        "Ayy 👋"
+        "👋"
     ]
 
     return (

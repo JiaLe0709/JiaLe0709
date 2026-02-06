@@ -60,7 +60,7 @@ const Message = () => {
                     className={`max-w-screen-md flex flex-col mx-auto p-3`}
                 >
                     <div className={'flex flex-col items-center justify-center space-y-4'}>
-                        <Image src={'https://jiale.imglab-cdn.net/pigeon.png?format=avif'} alt={'Pigeon icon'} width={150} height={120} unoptimized={true}/>
+                        <Image src={'/pigeon.png?format=avif'} alt={'Pigeon icon'} width={150} height={120} unoptimized={true}/>
                         <h3 className={'text-xl text-center font-extrabold'}>
                             {"Share your  "}
                             <Highlighter color={'#a5d619'} action={'underline'} className={'ml-2 mr-2'}><span className={''}>suggestions</span></Highlighter>

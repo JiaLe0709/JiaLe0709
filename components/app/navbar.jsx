@@ -50,7 +50,7 @@ export default function Navbar({typeofpage, navTitle}) {
                         className="cursor-pointer"
                     >
                         <Image
-                            src="https://jiale.imglab-cdn.net/favicon.png?format=avif"
+                            src="/favicon.png?format=avif"
                             alt="logo"
                             width={44}
                             height={44}
