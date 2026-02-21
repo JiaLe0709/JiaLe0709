@@ -2,28 +2,30 @@ import Layout from "@/layouts/globals";
 import {Card, CardContent, CardTitle, CardHeader, CardDescription} from "@/components/ui/card";
 import Image from "next/image";
 import {PhotoProvider, PhotoView} from "react-photo-view";
-import {Carousel, CarouselContent, CarouselItem} from "@/components/ui/carousel";
+import {Carousel, CarouselContent, CarouselItem} from "@/components/ui/carousel"
 import {MagicCard} from "@/components/magicui/magic-card";
 import 'react-photo-view/dist/react-photo-view.css';
-//import prisma from "@/lib/prisma";
 import {Badge} from "@/components/ui/badge";
 import {ArrowRight, ImageIcon, MapPinned} from "lucide-react";
 import {useRouter} from "next/router";
-import {getAllPosts} from "@/lib/notion";
 import FormattedDate from "@/components/app/FormattedDate";
+import {Fragment} from "react";
 
 export async function getStaticProps() {
 
-    const posts = await getAllPosts({onlyGallery: true});
-    //const DB = await prisma.posts.findMany();
-
-    //console.log(posts)
+    const posts = await fetch(`${process.env.GALLERY_SERVER}/api/public/gallery`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "jiale-gallery-hearts-key": process.env.GALLERY_SERVER_KEY
+        }
+    }).then(res => res.json());
 
     return {
         props: {
-            posts: posts
+            posts: posts.galleryList ?? []
         },
-        revalidate: 10,
+        revalidate: 60 * 60 * 24,
     };
 }
 
@@ -43,80 +45,84 @@ const Gallery = ({posts}) => {
                 <div
                     className={`max-w-screen-md flex flex-col mx-auto p-4 pt-8 items-center space-y-4`}
                 >
-                    {posts
-                        .sort((a, b) => new Date(b.date) - new Date(a.date))
-                        .map((i, id) => (
-                        <Card className="p-0 w-full max-w-lg shadow-none" key={id}>
-                            <MagicCard
-                                gradientFrom={"#96BC3C"}
-                                gradientTo={'#CDDE6E'}
-                                gradientColor={"#D9D9D955"}
-                                className="p-0 cursor-pointer"
-                            >
-                                <CardContent>
-                                    <Carousel className="w-full">
-                                        <CarouselContent>
-                                            <PhotoProvider>
-                                                {JSON.parse(i.image).map((img, id) => (
-                                                    <CarouselItem key={id}>
-                                                        <PhotoView
-                                                            src={`https://${img.sources}.${process.env.NEXT_PUBLIC_SOURCES_URL}/${img.item}`}
-                                                        >
-                                                                <Image
-                                                                    loading={'lazy'}
-                                                                    quality={100}
-                                                                    src={`https://${img.sources}.${process.env.NEXT_PUBLIC_SOURCES_URL}/${img.item}`}
-                                                                    alt={`Image ${id + 1}`}
-                                                                    className="aspect-video w-full rounded-tl-xl rounded-tr-xl object-cover"
-                                                                    width={250}
-                                                                    unoptimized={true}
-                                                                    height={200}
-                                                                />
-                                                        </PhotoView>
-                                                    </CarouselItem>
-                                                ))}
-                                            </PhotoProvider>
-                                        </CarouselContent>
-                                    </Carousel>
-                                </CardContent>
-                                <CardHeader className={'pl-5 pr-5 pt-2 pb-3'}>
-                                    <CardTitle className={'flex gap-2 items-center'}>
-                                        <p className={'text-xl'}>{/*`${new Date(i.date).getFullYear()}-${String(new Date(i.date).getMonth() + 1).padStart(2, '0')}-${String(new Date(i.date).getDate()).padStart(2, '0')}`*/}<FormattedDate date={i.date}></FormattedDate></p>
-                                        <div>
-                                            <Badge
-                                                className={`mr-2 bg-lime-200 text-black h-5 font-bold text-[12.5px] inline-flex items-center gap-1`}>
-                                                <ImageIcon className={'w-5 h-5'}/>
-                                                {JSON.parse(i.image).length} image{(JSON.parse(i.image).length > 1) && 's'}
-                                            </Badge>
-                                        </div>
-                                    </CardTitle>
-                                    <CardDescription className={'flex gap-2 overflow-x-auto justify-between'}>
-                                        <div className="">
-                                            {i.location && (
-                                                <a
-                                                    target="_blank"
-                                                    href={`https://www.google.com/maps?q=${encodeURIComponent(i.location)}`}
-                                                    rel="noopener noreferrer"
-                                                >
-                                                    <Badge
-                                                        className={`bg-lime-200 text-black font-bold text-[12.5px] inline-flex items-center gap-1`}>
-                                                        <MapPinned className={'w-5 h-5'}/>
-                                                        {i.location}
-                                                    </Badge>
-                                                </a>
-                                            )}
+                    {posts.length === 0 ? "" : (
+                        <Fragment>
+                            {posts
+                                .sort((a, b) => new Date(b.date) - new Date(a.date))
+                                .map((i, id) => (
+                                    <Card className="p-0 w-full max-w-lg shadow-none" key={id}>
+                                        <MagicCard
+                                            gradientFrom={"#96BC3C"}
+                                            gradientTo={'#CDDE6E'}
+                                            gradientColor={"#D9D9D955"}
+                                            className="p-0 cursor-pointer"
+                                        >
+                                            <CardContent>
+                                                <Carousel className="w-full">
+                                                    <CarouselContent>
+                                                        <PhotoProvider>
+                                                            {i.imagesList.map((img, id) => (
+                                                                <CarouselItem key={id}>
+                                                                    <PhotoView
+                                                                        src={`${process.env.NEXT_PUBLIC_GALLERY_CDN_LINK}/${i.slugs}/${img}?quality=90&format=avif`}
+                                                                    >
+                                                                            <Image
+                                                                                loading={'lazy'}
+                                                                                quality={100}
+                                                                                src={`${process.env.NEXT_PUBLIC_GALLERY_CDN_LINK}/${i.slugs}/${img}?quality=90&format=avif&width=1200&height=675`}
+                                                                                alt={`Image ${id + 1}`}
+                                                                                className="aspect-video w-full rounded-tl-xl rounded-tr-xl object-cover"
+                                                                                width={250}
+                                                                                unoptimized={true}
+                                                                                height={200}
+                                                                            />
+                                                                    </PhotoView>
+                                                                </CarouselItem>
+                                                            ))}
+                                                        </PhotoProvider>
+                                                    </CarouselContent>
+                                                </Carousel>
+                                            </CardContent>
+                                            <CardHeader className={'pl-5 pr-5 pt-2 pb-3'}>
+                                                <CardTitle className={'flex gap-2 items-center'}>
+                                                    <p className={'text-xl'}>{/*`${new Date(i.date).getFullYear()}-${String(new Date(i.date).getMonth() + 1).padStart(2, '0')}-${String(new Date(i.date).getDate()).padStart(2, '0')}`*/}<FormattedDate date={i.date}></FormattedDate></p>
+                                                    <div>
+                                                        <Badge
+                                                            className={`mr-2 bg-lime-200 text-black h-5 font-bold text-[12.5px] inline-flex items-center gap-1`}>
+                                                            <ImageIcon className={'w-5 h-5'}/>
+                                                            {i.imagesList.length} image{(i.imagesList.length > 1) && 's'}
+                                                        </Badge>
+                                                    </div>
+                                                </CardTitle>
+                                                <CardDescription className={'flex gap-2 overflow-x-auto justify-between'}>
+                                                    <div className="">
+                                                        {i.location && (
+                                                            <a
+                                                                target="_blank"
+                                                                href={`https://www.google.com/maps?q=${encodeURIComponent(i.location)}`}
+                                                                rel="noopener noreferrer"
+                                                            >
+                                                                <Badge
+                                                                    className={`bg-lime-200 text-black font-bold text-[12.5px] inline-flex items-center gap-1`}>
+                                                                    <MapPinned className={'w-5 h-5'}/>
+                                                                    {i.location}
+                                                                </Badge>
+                                                            </a>
+                                                        )}
 
-                                        </div>
-                                        <div onClick={() => {
-                                            router.push(`/gallery/${i.slug}`)
-                                        }}>
-                                            <ArrowRight className={'w-5 h-5 cursor-pointer'}/>
-                                        </div>
-                                    </CardDescription>
-                                </CardHeader>
-                            </MagicCard>
-                        </Card>
-                    ))}
+                                                    </div>
+                                                    <div onClick={() => {
+                                                        router.push(`/gallery/${i.slugs}`)
+                                                    }}>
+                                                        <ArrowRight className={'w-5 h-5 cursor-pointer'}/>
+                                                    </div>
+                                                </CardDescription>
+                                            </CardHeader>
+                                        </MagicCard>
+                                    </Card>
+                                ))}
+                        </Fragment>
+                    )}
                 </div>
                 <br/>
             </Layout>

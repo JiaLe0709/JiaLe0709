@@ -73,7 +73,7 @@ export default function Home({imageList}) {
                     className="cursor-pointer select-none"
                 >
                     <Image
-                        src="/favicon.png"
+                        src="https://cdn.jsdelivr.net/gh/Jiale0709/jsdeliver@latest/jiale-wonderland-asset/favicon.png"
                         alt="Logo"
                         unoptimized={true}
                         width={170}

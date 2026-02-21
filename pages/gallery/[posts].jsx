@@ -1,5 +1,4 @@
 import Layout from "@/layouts/globals";
-//import prisma from '@/lib/prisma';
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
@@ -7,22 +6,26 @@ import { ImageIcon, MapPinned, Send } from "lucide-react";
 import { useRouter } from "next/router";
 import React from 'react';
 import 'react-photo-view/dist/react-photo-view.css';
-import dynamic from "next/dynamic";
-import { getAllPosts } from "@/lib/notion/getAllPosts";
 import FormattedDate from "@/components/app/FormattedDate";
 import { Spinner } from "@/components/ui/spinner"
 import { Item, ItemContent, ItemMedia, ItemTitle} from "@/components/ui/item"
 
 export async function getStaticPaths() {
 
-    const slugs = await getAllPosts({ onlyGallery: true });
+    const slugs = await fetch(`${process.env.GALLERY_SERVER}/api/public/gallery`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "jiale-gallery-hearts-key": process.env.GALLERY_SERVER_KEY
+        }
+    }).then(res => res.json());
 
-    //console.log(slugs.map(post => post?.slug?.toString()));
+    //console.log(slugs);
 
     return {
-        paths: slugs.map(post => ({
+        paths: slugs.slugsList.map(post => ({
             params: {
-                posts: post?.slug?.toString()
+                posts: post
             }
         })),
         fallback: true,
@@ -31,23 +34,32 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
     try {
-        const posts = await getAllPosts({ onlyGallery: true });
-        //console.log('Params:', params.posts);
 
-        const post = posts.find(t => t.slug === params.posts);
+        const posts = await fetch(`${process.env.GALLERY_SERVER}/api/public/gallery`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "jiale-gallery-hearts-key": process.env.GALLERY_SERVER_KEY
+            }
+        }).then(res => res.json());
 
-        if (!post) {
+        const post = posts.galleryList.filter(i => i.slugs === params.posts)
+
+        if (post[0]) {
+            return {
+                props: {
+                    post: post[0]
+                },
+                revalidate: 60,
+            };
+        } else {
             return {
                 notFound: true,
+                revalidate: 60
             };
         }
 
-        return {
-            props: {
-                post,
-            },
-            revalidate: 60,
-        };
+
     } catch (e) {
         console.error(e);
         return {
@@ -55,11 +67,6 @@ export async function getStaticProps({ params }) {
         };
     }
 }
-
-const Comment = dynamic(
-    () => import('@/components/app/comments'),
-    { ssr: false }
-);
 
 const Posts = ({ post }) => {
     const router = useRouter();
@@ -91,7 +98,7 @@ const Posts = ({ post }) => {
             navTitle="Gallery"
             typeOfPage="gallery"
             path={router.asPath}
-            title={`${post.location} ⋅ Jia Le's Gallery`}
+            title={`${post.title} ⋅ Jia Le's Gallery`}
             description={`Image at ${post.location} on ${new Date(post.date).getFullYear()}-${String(new Date(post.date).getMonth() + 1).padStart(2, '0')}-${String(new Date(post.date).getDate()).padStart(2, '0')}.`}
         >
             <div className="max-w-screen-md flex flex-col mx-auto p-3 items-center space-y-4">
@@ -99,14 +106,14 @@ const Posts = ({ post }) => {
                     <br />
                     <div className="flex justify-between items-center mb-1 mt-2">
                         <h1 className="text-t-green font-bold text-2xl flex items-center">
-                            <Image
-                                alt="Icon"
-                                src="https://jiale.imglab-cdn.net/Teddy_Bear.png?format=png"
-                                className="mr-2 w-8 h-8"
-                                width={100}
-                                height={100}
-                                unoptimized
-                            />
+                            {/*<Image*/}
+                            {/*    alt="Icon"*/}
+                            {/*    src="https://jiale.imglab-cdn.net/Teddy_Bear.png?format=png"*/}
+                            {/*    className="mr-2 w-8 h-8"*/}
+                            {/*    width={100}*/}
+                            {/*    height={100}*/}
+                            {/*    unoptimized*/}
+                            {/*/>*/}
                             <FormattedDate date={post.date}/>
                             {/*{new Date(post.date).getFullYear()} -
                                 {String(new Date(post.date).getMonth() + 1).padStart(2, '0')}-
@@ -146,24 +153,24 @@ const Posts = ({ post }) => {
                         <div>
               <span className="dark:text-[#FCF5EA] h-7 font-bold text-[14px] inline-flex items-center gap-1">
                 <ImageIcon className="h-6 w-4" />
-                  {JSON.parse(post.image).length} image
-                  {JSON.parse(post.image).length > 1 && 's'}
+                  {post.imagesList.length} image
+                  {post.imagesList.length > 1 && 's'}
               </span>
                         </div>
                     </div>
 
                     {/* Gallery */}
                     <PhotoProvider>
-                        {JSON.parse(post.image).map((img, idx) => (
+                        {post.imagesList.map((img, idx) => (
                             <div key={idx}>
                                 <PhotoView
                                     style={{ zIndex: 9999 }}
-                                    src={`https://${img.sources}.${process.env.NEXT_PUBLIC_SOURCES_URL}/${img.item}`}
+                                    src={`${process.env.NEXT_PUBLIC_GALLERY_CDN_LINK}/${post.slugs}/${img}?quality=90&format=avif`}
                                 >
                                     <div className="p-[1.60px] rounded-2xl ">
                                         <Image
                                             quality={100}
-                                            src={`https://${img.sources}.${process.env.NEXT_PUBLIC_SOURCES_URL}/${img.item}`}
+                                            src={`${process.env.NEXT_PUBLIC_GALLERY_CDN_LINK}/${post.slugs}/${img}?quality=90&format=avif&width=1200&height=800`}
                                             alt={`Image ${idx + 1}`}
                                             className="aspect-video w-full rounded-xl object-cover"
                                             width={250}
@@ -176,7 +183,6 @@ const Posts = ({ post }) => {
                             </div>
                         ))}
                     </PhotoProvider>
-                    <Comment />
                     <br />
                 </div>
             </div>

@@ -27,13 +27,6 @@ export default function App({Component, pageProps}) {
             router.events.off('routeChangeError', handleStop)
         }
     }, [router])
-
-    if (router.asPath.startsWith('/blog/')) {
-        import('react-notion-x/src/styles.css')
-        import('@/styles/prism.css')
-        import('katex/dist/katex.min.css')
-        import('@/styles/notionOverride.css')
-    }
     /*
     Router.events.on('routeChangeStart', () => NProgress.start());
     Router.events.on('routeChangeComplete', () => NProgress.done());
