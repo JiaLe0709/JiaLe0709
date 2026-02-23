@@ -14,6 +14,30 @@ const nextConfig = {
             },
         ],
     },
+    async redirects() {
+        return [
+            {
+                source: '/gallery/1',
+                destination: '/gallery/hoga-gaharu-tea-valley',
+                permanent: true,
+            },
+            {
+                source: '/gallery/2',
+                destination: '/gallery/pekan-papan',
+                permanent: true,
+            },
+            {
+                source: '/gallery/3',
+                destination: '/gallery/jalan-panglima-ipoh',
+                permanent: true,
+            },
+            {
+                source: '/gallery/4',
+                destination: '/gallery/chon-law-enterprise',
+                permanent: true,
+            },
+        ]
+    },
 };
 
 export default withSentryConfig(nextConfig, {
